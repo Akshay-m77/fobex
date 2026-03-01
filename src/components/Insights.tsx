@@ -1,5 +1,3 @@
-import React from 'react';
-
 const insights = [
     {
         id: 1,
