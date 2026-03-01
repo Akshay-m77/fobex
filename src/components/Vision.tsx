@@ -35,45 +35,47 @@ function ScrollRevealSection({
     const boldWords = boldText.split(' ');
     const fadeWords = fadeText.split(' ');
     const allWords = [...boldWords, ...fadeWords];
-    const boldCount = boldWords.length;
-
     const handleScroll = useCallback(() => {
         if (!sectionRef.current) return;
 
         const rect = sectionRef.current.getBoundingClientRect();
         const windowH = window.innerHeight;
 
-        // Calculate scroll progress through section (0 to 1)
-        // Starts revealing early — as soon as the section top enters the viewport
-        const progress = Math.max(
-            0,
-            Math.min(1, 1 - rect.top / (windowH * 0.82))
-        );
+        // Calculate scroll progress through the tall holding section (0 to 1)
+        const scrollableDistance = rect.height - windowH;
+        let progress = 0;
+
+        if (scrollableDistance > 0) {
+            progress = Math.max(0, Math.min(1, -rect.top / scrollableDistance));
+        }
 
         // Reveal words progressively based on scroll progress
         const totalWords = allWords.length;
         wordsRef.current.forEach((wordEl, i) => {
             if (!wordEl) return;
-            // Each word has its own reveal threshold
+            // Spread the reveal logic across the scroll progress
             const wordProgress = i / totalWords;
             const reveal = Math.max(
                 0,
-                Math.min(1, (progress - wordProgress * 0.6) / 0.28)
+                Math.min(1, (progress - wordProgress * 0.7) / 0.3)
             );
 
             if (dark) {
                 // Dark bg: from dim gray to white
-                const dimColor = 75;      // starting gray
-                const brightColor = 255;  // target white
+                const dimColor = 75;
+                const brightColor = 255;
                 const val = Math.round(dimColor + (brightColor - dimColor) * reveal);
                 wordEl.style.color = `rgb(${val}, ${val}, ${val})`;
             } else {
                 // Light bg: from light gray to dark
-                const dimColor = 200;    // starting light gray
-                const brightColor = 25;  // target near-black
+                const dimColor = 200;
+                const brightColor = 25;
                 const val = Math.round(dimColor + (brightColor - dimColor) * reveal);
                 wordEl.style.color = `rgb(${val}, ${val}, ${val})`;
             }
+
+            // Word becomes bold as it lights up
+            wordEl.style.fontWeight = reveal > 0.4 ? '700' : '300';
         });
     }, [allWords.length, dark]);
 
@@ -86,34 +88,35 @@ function ScrollRevealSection({
     return (
         <section
             ref={sectionRef}
-            className={`relative py-40 max-md:py-24 overflow-hidden ${dark ? 'bg-[var(--color-bg-primary)]' : 'bg-white'
-                }`}
+            className={`relative h-[150vh] ${dark ? 'bg-[var(--color-bg-primary)]' : 'bg-white'}`}
         >
-            <div className="max-w-[800px] mx-auto px-6 text-center">
-                {/* Label */}
-                <p
-                    className={`text-sm tracking-wide mb-8 font-normal ${dark ? 'text-gray-500' : 'text-gray-400'
-                        }`}
-                >
-                    {label}
-                </p>
+            <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden w-full">
+                <div className="max-w-[800px] mx-auto px-6 text-center">
+                    {/* Label */}
+                    <p
+                        className={`text-sm tracking-wide mb-8 font-normal ${dark ? 'text-gray-500' : 'text-gray-400'
+                            }`}
+                    >
+                        {label}
+                    </p>
 
-                {/* Main statement with word-by-word scroll reveal */}
-                <h2 className="text-[2.75rem] max-md:text-[1.75rem] leading-[1.3] font-light cursor-default">
-                    {allWords.map((word, i) => (
-                        <span
-                            key={i}
-                            ref={(el) => { wordsRef.current[i] = el; }}
-                            className={`inline-block mr-[0.3em] transition-all duration-300 hover:-translate-y-1 hover:scale-105 ${i < boldCount ? 'font-semibold' : 'font-light'
-                                }`}
-                            style={{
-                                color: dark ? 'rgb(75, 75, 75)' : 'rgb(200, 200, 200)',
-                            }}
-                        >
-                            {word}
-                        </span>
-                    ))}
-                </h2>
+                    {/* Main statement with word-by-word scroll reveal */}
+                    <h2 className="text-[2.75rem] max-md:text-[1.75rem] leading-[1.3] cursor-default transition-all">
+                        {allWords.map((word, i) => (
+                            <span
+                                key={i}
+                                ref={(el) => { wordsRef.current[i] = el; }}
+                                className="inline-block mr-[0.3em] transition-all duration-300 hover:-translate-y-1 hover:scale-105"
+                                style={{
+                                    color: dark ? 'rgb(75, 75, 75)' : 'rgb(200, 200, 200)',
+                                    fontWeight: 300
+                                }}
+                            >
+                                {word}
+                            </span>
+                        ))}
+                    </h2>
+                </div>
             </div>
         </section>
     );
