@@ -78,7 +78,7 @@ export default function Process() {
                     {steps.map((step, i) => (
                         <div key={i} className="group transition-transform duration-300 hover:-translate-y-2">
                             <div className="mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:text-[var(--color-accent-purple)]">{step.icon}</div>
-                            <h3 className="text-base font-bold text-gray-900 mb-2">{step.title}</h3>
+                            <h3 className="text-base font-medium text-gray-900 mb-2">{step.title}</h3>
                             <p className="text-xs text-gray-500 leading-relaxed mb-6 transition-colors duration-300 group-hover:text-gray-700">{step.description}</p>
                             <div className="flex flex-col gap-3">
                                 {step.items.map((item, j) => (

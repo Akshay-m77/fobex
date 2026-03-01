@@ -48,12 +48,12 @@ export default function Hero() {
             {/* Content */}
             <div className="max-w-[var(--container-lg)] mx-auto px-6 max-md:px-5 relative z-10 w-full max-md:mt-[40%]">
                 {/* Title — left aligned */}
-                <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-bold max-md:not-italic italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">
-                    <span className="text-white max-md:block">One Partner.</span>
-                    <span className="max-md:hidden"> </span>
-                    <br className="md:hidden" />
-                    <span className="gradient-text">Every Digital </span>
-                    <span className="text-white max-md:block"> Edge Your Brand Needs.</span>
+                <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-medium max-md:not-italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">
+                    <span className="block">
+                        <span className="text-white">One Partner </span>
+                        <span className="gradient-text">Every Digital Edge</span>
+                    </span>
+                    <span className="text-white block">Your Brand Needs</span>
                 </h1>
 
                 {/* Description */}

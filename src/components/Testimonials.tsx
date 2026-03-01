@@ -77,7 +77,7 @@ export default function Testimonials() {
                 <div className="flex gap-12 items-start max-md:flex-col">
                     {/* Left — Case study */}
                     <div className="flex-1 min-w-0">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                        <h3 className="text-2xl font-medium text-gray-900 mb-3">
                             {t.caseTitle}
                         </h3>
                         <p className="text-sm text-gray-600 leading-relaxed mb-6">
@@ -110,7 +110,7 @@ export default function Testimonials() {
 
                     {/* Right — Testimonial quote */}
                     <div className="flex-1 min-w-0 pt-2">
-                        <h3 className="text-[1.75rem] max-md:text-xl font-bold text-gray-900 leading-[1.3] mb-6 transition-colors duration-300 hover:text-[var(--color-accent-purple)]">
+                        <h3 className="text-[1.75rem] max-md:text-xl font-medium text-gray-900 leading-[1.3] mb-6 transition-colors duration-300 hover:text-[var(--color-accent-purple)]">
                             {t.quoteTitle}
                         </h3>
                         {t.quoteBody.map((p, i) => (

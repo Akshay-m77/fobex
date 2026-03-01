@@ -36,7 +36,7 @@ export default function Footer() {
             <div className="max-w-[var(--container-lg)] mx-auto px-6 relative z-10">
                 {/* Top row: Heading + Logo */}
                 <div className="flex items-start justify-between mb-12 max-md:flex-col max-md:gap-8">
-                    <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-bold italic leading-[1.2] text-white">
+                    <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-medium italic leading-[1.2] text-white">
                         Set bold goals.
                         <br />
                         Rise beyond limits.

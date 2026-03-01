@@ -101,7 +101,7 @@ export default function Industries() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
                             <div className="absolute bottom-6 left-6 z-10">
-                                <h3 className="text-2xl font-bold text-white transition-transform duration-300 group-hover:translate-x-2">{current.name}</h3>
+                                <h3 className="text-2xl font-medium text-white transition-transform duration-300 group-hover:translate-x-2">{current.name}</h3>
                             </div>
                         </div>
 
@@ -124,7 +124,7 @@ export default function Industries() {
 
                     {/* Right — Details */}
                     <div className="flex-1 min-w-0 pt-2">
-                        <h3 className="text-2xl font-bold text-[var(--color-accent-purple)] mb-5">
+                        <h3 className="text-2xl font-medium text-[var(--color-accent-purple)] mb-5">
                             {current.name}
                         </h3>
                         {current.paragraphs.map((p, i) => (

@@ -10,7 +10,7 @@ export default function CTA() {
                 <div className="flex gap-16 items-start max-md:flex-col">
                     {/* Left — Heading + Quote + World Map */}
                     <div className="flex-1 min-w-0">
-                        <h2 className="text-5xl max-md:text-3xl font-bold leading-[1.15] mb-10">
+                        <h2 className="text-5xl max-md:text-3xl font-medium leading-[1.15] mb-10">
                             <span className="text-white">Let's Talk</span>
                             <br />
                             <span className="text-[var(--color-accent-purple)]">Business</span>

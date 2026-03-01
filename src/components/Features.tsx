@@ -41,7 +41,7 @@ export default function Features() {
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 {/* Header */}
                 <div className="text-center mb-14">
-                    <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-bold leading-[1.2] tracking-[-0.02em] text-gray-900 mb-5">
+                    <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-medium leading-[1.2] tracking-[-0.02em] text-gray-900 mb-5">
                         We work with forward-thinking brands <br /> to create high-quality digital spaces.
                     </h2>
                     <p className="text-sm text-gray-500 max-w-[520px] mx-auto leading-relaxed">
@@ -70,7 +70,7 @@ export default function Features() {
 
                             {/* Text content */}
                             <div className="p-5">
-                                <h3 className="text-base font-semibold text-gray-900 mb-1.5">
+                                <h3 className="text-base font-medium text-gray-900 mb-1.5">
                                     {s.title}
                                 </h3>
                                 <p className="text-xs text-gray-500 leading-relaxed">
@@ -92,7 +92,7 @@ export default function Features() {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
                                         <div className="absolute bottom-5 left-5 right-5 z-10 text-left">
-                                            <h3 className="text-base font-bold text-white mb-1.5">
+                                            <h3 className="text-base font-medium text-white mb-1.5">
                                                 {s.title}
                                             </h3>
                                             <p className="text-[11px] text-white/80 leading-relaxed max-w-[90%] whitespace-normal overflow-hidden overflow-ellipsis line-clamp-2">
