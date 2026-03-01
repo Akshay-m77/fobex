@@ -42,7 +42,7 @@ export default function Navbar() {
                 : 'bg-transparent h-[90px]'
                 }`}
         >
-            <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
+            <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between max-md:justify-start max-md:gap-4">
                 <div className="flex items-center h-full gap-12 max-md:gap-0">
                     {/* Logo */}
                     <a href="#" className={`flex items-center -mt-1 z-[1001] transition-all duration-300 hover:scale-105`}>
@@ -88,7 +88,7 @@ export default function Navbar() {
 
                 {/* Hamburger */}
                 <button
-                    className="hidden max-md:flex flex-col gap-[5px] z-[1001] p-1"
+                    className="hidden max-md:flex flex-col gap-[5px] z-[1001] p-1 max-md:order-first"
                     onClick={() => setMenuOpen(!menuOpen)}
                     aria-label="Toggle menu"
                 >
