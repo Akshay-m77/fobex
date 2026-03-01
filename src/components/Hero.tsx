@@ -52,7 +52,7 @@ export default function Hero() {
                     <span className="text-white max-md:block">One Partner.</span>
                     <span className="max-md:hidden"> </span>
                     <br className="md:hidden" />
-                    <span className="gradient-text max-md:hidden">Every Digital </span>
+                    <span className="gradient-text">Every Digital </span>
                     <span className="text-white max-md:block"> Edge Your Brand Needs.</span>
                 </h1>
 
