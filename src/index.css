@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+@theme {
+  --font-family-sans: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Core backgrounds */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #111118;
+  --color-bg-card: rgba(255, 255, 255, 0.03);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.06);
+
+  /* Section backgrounds */
+  --color-bg-dark: #0c0c18;
+  --color-bg-dark-alt: #0c0c14;
+  --color-bg-footer: #0a0a14;
+  --color-bg-light: #f0f0f6;
+  --color-bg-light-alt: #f7f7fb;
+  --color-bg-white: #ffffff;
+
+  /* Borders */
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-border-light: rgba(255, 255, 255, 0.1);
+
+  /* Text */
+  --color-text-primary: #f0f0f5;
+  --color-text-secondary: #9494a8;
+  --color-text-muted: #5c5c72;
+  --color-text-placeholder: #4b5563;
+
+  /* Accents */
+  --color-accent-purple: #7c3aed;
+  --color-accent-blue: #3b82f6;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-purple-light: #8b5cf6;
+
+  /* White overlays (for glass effects, buttons, etc.) */
+  --color-overlay-light: rgba(255, 255, 255, 0.06);
+  --color-overlay-lighter: rgba(255, 255, 255, 0.1);
+  --color-overlay-hover: rgba(255, 255, 255, 0.1);
+  --color-overlay-hover-border: rgba(255, 255, 255, 0.15);
+}
+
+/*
+ * RGB channel variables for alpha-channel compositing.
+ * Usage: rgba(var(--accent-purple-rgb), 0.3)
+ * These are outside @theme because Tailwind doesn't need them as utilities.
+ */
+:root {
+  --accent-purple-rgb: 124, 58, 237;
+  --accent-blue-rgb: 59, 130, 246;
+  --white-rgb: 255, 255, 255;
+  --bg-primary-rgb: 10, 10, 15;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-blue), var(--color-accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-blue), var(--color-accent-cyan));
+  box-shadow: 0 4px 24px rgba(var(--accent-purple-rgb), 0.3);
+}
+
+.btn-gradient:hover {
+  box-shadow: 0 8px 32px rgba(var(--accent-purple-rgb), 0.5);
+  transform: translateY(-2px);
+}
+
+/* Glass card */
+.glass-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+}
+
+.glass-card:hover {
+  background: var(--color-bg-card-hover);
+  border-color: var(--color-border-hover);
+  transform: translateY(-4px);
+}
+
+/* Form input */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(var(--white-rgb), 0.04);
+  border: 1px solid rgba(var(--white-rgb), 0.08);
+  color: white;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-input:hover {
+  background: rgba(var(--white-rgb), 0.06);
+  transform: translateY(-1px);
+}
+
+.form-input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.form-input:focus {
+  border-color: var(--color-accent-purple);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomOutFit {
+  from {
+    opacity: 0;
+    transform: scale(1.15) translate(-2%, 2%);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.animate-zoom-out-fit {
+  animation: zoomOutFit 2s ease-out forwards;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+.animate-gradient-flow {
+  animation: gradientFlow 2s linear infinite;
+}

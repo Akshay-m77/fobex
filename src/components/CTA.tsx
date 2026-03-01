@@ -1,0 +1,151 @@
+import { useState } from 'react';
+import ArrowButton from './ui/ArrowButton';
+
+export default function CTA() {
+    const [nda, setNda] = useState(false);
+
+    return (
+        <section className="bg-[var(--color-bg-dark-alt)] py-24 max-md:py-16 border-t-4 border-[var(--color-accent-purple)]" id="contact">
+            <div className="max-w-[1100px] mx-auto px-6">
+                <div className="flex gap-16 items-start max-md:flex-col">
+                    {/* Left — Heading + Quote + World Map */}
+                    <div className="flex-1 min-w-0">
+                        <h2 className="text-5xl max-md:text-3xl font-bold leading-[1.15] mb-10">
+                            <span className="text-white">Let's Talk</span>
+                            <br />
+                            <span className="text-[var(--color-accent-purple)]">Business</span>
+                        </h2>
+
+                        <blockquote className="text-sm italic text-gray-400 leading-relaxed mb-3 max-w-[300px]">
+                            "From big ideas to real results, we partner
+                            with brands to design solutions that truly
+                            make an impact."
+                        </blockquote>
+                        <p className="text-sm text-gray-300 font-medium mb-12">
+                            CEO - Company name
+                        </p>
+
+                        {/* World map dots */}
+                        <div className="relative h-40 max-md:h-28 overflow-hidden opacity-60">
+                            <svg viewBox="0 0 500 200" fill="none" className="w-full h-full">
+                                {/* Simplified dot-based world map */}
+                                {[
+                                    { key: 'na', coords: [[60, 40], [70, 35], [80, 38], [90, 42], [65, 50], [75, 48], [85, 52], [95, 50], [70, 60], [80, 58], [90, 62], [100, 55], [75, 70], [85, 68], [95, 72]] },
+                                    { key: 'sa', coords: [[120, 100], [115, 110], [125, 108], [118, 120], [122, 130], [120, 140], [115, 150], [125, 145]] },
+                                    { key: 'eu', coords: [[230, 30], [240, 28], [250, 32], [235, 40], [245, 38], [255, 42], [240, 48], [250, 50], [260, 45]] },
+                                    { key: 'af', coords: [[240, 70], [250, 68], [245, 80], [255, 78], [248, 90], [252, 100], [250, 110], [248, 120], [252, 125]] },
+                                    { key: 'as', coords: [[280, 30], [290, 28], [300, 32], [310, 35], [320, 30], [330, 38], [285, 45], [295, 42], [305, 48], [315, 45], [325, 50], [335, 42], [340, 48], [290, 55], [300, 58], [310, 52], [320, 60], [330, 55], [340, 58], [300, 68], [310, 65], [320, 70], [330, 68]] },
+                                    { key: 'au', coords: [[380, 110], [390, 108], [400, 112], [385, 120], [395, 118], [405, 122], [390, 128], [400, 130]] },
+                                ].map((region) =>
+                                    region.coords.map(([x, y], i) => (
+                                        <circle key={`${region.key}${i}`} cx={x} cy={y} r="1.5" fill="var(--color-accent-purple)" opacity="0.7" />
+                                    ))
+                                )}
+                                {/* Connection lines */}
+                                <line x1="100" y1="55" x2="230" y2="40" stroke="var(--color-accent-purple)" strokeWidth="0.3" opacity="0.3" />
+                                <line x1="255" y1="45" x2="280" y2="35" stroke="var(--color-accent-purple)" strokeWidth="0.3" opacity="0.3" />
+                                <line x1="340" y1="58" x2="380" y2="110" stroke="var(--color-accent-purple)" strokeWidth="0.3" opacity="0.3" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    {/* Right — Contact Form */}
+                    <div className="flex-1 min-w-0">
+                        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-5">
+                            {/* Full Name */}
+                            <FormField label="Full Name" required>
+                                <input
+                                    type="text"
+                                    placeholder="Name..."
+                                    className="form-input"
+                                />
+                            </FormField>
+
+                            {/* Primary Contact Number */}
+                            <FormField label="Primary Contact Number" required>
+                                <div className="flex gap-2">
+                                    <div className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0`}>
+                                        <span className="text-base">🇮🇳</span>
+                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                            <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </div>
+                                    <input
+                                        type="tel"
+                                        placeholder="+91"
+                                        className="form-input"
+                                    />
+                                </div>
+                            </FormField>
+
+                            {/* Email Address */}
+                            <FormField label="Email Address" required>
+                                <input
+                                    type="email"
+                                    placeholder="Email...."
+                                    className="form-input"
+                                />
+                            </FormField>
+
+                            {/* Schedule call link */}
+                            <p className="text-xs text-gray-500">
+                                We will call you ASAP or you can{' '}
+                                <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)] transition-colors">
+                                    schedule a call.
+                                </a>
+                            </p>
+
+                            {/* Tell us about your project */}
+                            <FormField label="Tell us more about your project">
+                                <textarea
+                                    rows={4}
+                                    className="form-input resize-none"
+                                />
+                            </FormField>
+
+                            {/* NDA Checkbox */}
+                            <label className="flex items-center gap-2.5 cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    checked={nda}
+                                    onChange={() => setNda(!nda)}
+                                    className="w-4 h-4 rounded border-gray-600 accent-[var(--color-accent-purple)]"
+                                />
+                                <span className="text-xs text-gray-400">
+                                    I want to protect my data by signing an NDA.
+                                </span>
+                            </label>
+
+                            {/* Submit Button */}
+                            <ArrowButton type="submit" fullWidth>
+                                Submit Enquiry
+                            </ArrowButton>
+
+                            {/* Privacy disclaimer */}
+                            <p className="text-xs text-gray-500 leading-relaxed">
+                                Please review our{' '}
+                                <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)]">Privacy Policy</a>
+                                {' '}and{' '}
+                                <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)]">Terms of Service</a>
+                                {' '}before providing your details and clicking Submit Enquiry button
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+/** Small helper for consistent form field labels */
+function FormField({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+    return (
+        <div>
+            <label className="text-xs text-gray-400 mb-1.5 block">
+                {label}
+                {required && <span className="text-[var(--color-accent-purple)]"> *</span>}
+            </label>
+            {children}
+        </div>
+    );
+}
