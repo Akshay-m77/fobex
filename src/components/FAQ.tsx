@@ -37,39 +37,50 @@ export default function FAQ() {
 
     return (
         <section className="bg-[var(--color-bg-light)] py-24 max-md:py-16" id="faq">
-            <div className="max-w-[var(--container-sm)] mx-auto px-6">
-                <SectionHeader
-                    label="[FOR CURIOUS MIND]"
-                    heading={
-                        <>
-                            Frequently <span className="text-[var(--color-accent-purple)]">asked</span> Questions
-                        </>
-                    }
-                    subtitle="Interested in working with us but have a few questions? We've answered the most common ones here. For anything more specific, our team is always happy to help—just reach out."
-                />
-
-                {/* FAQ Items */}
-                <div className="flex flex-col">
-                    {faqs.map((q, i) => (
-                        <div key={i} className="border-b border-gray-300">
-                            <button
-                                onClick={() => setOpen(open === i ? null : i)}
-                                className="w-full flex items-center justify-between py-5 text-left cursor-pointer group"
-                            >
-                                <span className="text-sm italic font-medium text-gray-900 group-hover:text-[var(--color-accent-purple)] group-hover:translate-x-2 transition-all duration-300">
-                                    {q.question}
-                                </span>
-                                <span className={`text-gray-400 text-xl leading-none transition-all duration-300 group-hover:scale-125 group-hover:text-[var(--color-accent-purple)] ${open === i ? 'rotate-45 !text-[var(--color-accent-purple)]' : ''}`}>
-                                    +
-                                </span>
-                            </button>
-                            {open === i && (
-                                <div className="pb-5 text-sm text-gray-500 leading-relaxed">
-                                    {q.answer}
-                                </div>
-                            )}
+            <div className="max-w-[var(--container-lg)] mx-auto px-6">
+                <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+                    {/* Left Column: Heading */}
+                    <div className="lg:col-span-5">
+                        <div className="lg:sticky lg:top-32">
+                            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent-purple)] mb-4">
+                                [FOR CURIOUS MIND]
+                            </p>
+                            <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-medium leading-[1.2] tracking-[-0.02em] mb-5 text-gray-900">
+                                Frequently <span className="text-[var(--color-accent-purple)]">asked</span> Questions
+                            </h2>
+                            <p className="text-sm leading-relaxed text-gray-500 max-w-[600px]">
+                                Interested in working with us but have a few questions? We've answered the most common ones here. For anything more specific, our team is always happy to help—just reach out.
+                            </p>
                         </div>
-                    ))}
+                    </div>
+
+                    {/* Right Column: FAQ Items */}
+                    <div className="lg:col-span-7">
+                        <div className="flex flex-col border-t border-gray-300">
+                            {faqs.map((q, i) => (
+                                <div key={i} className="border-b border-gray-300">
+                                    <button
+                                        onClick={() => setOpen(open === i ? null : i)}
+                                        className="w-full flex items-start justify-between py-6 text-left cursor-pointer group gap-6"
+                                    >
+                                        <span className="text-base italic font-medium text-gray-900 group-hover:text-[var(--color-accent-purple)] group-hover:translate-x-2 transition-all duration-300">
+                                            {q.question}
+                                        </span>
+                                        <span className={`text-gray-400 text-xl leading-none transition-all duration-300 group-hover:scale-125 group-hover:text-[var(--color-accent-purple)] mt-1 ${open === i ? 'rotate-45 !text-[var(--color-accent-purple)]' : ''}`}>
+                                            +
+                                        </span>
+                                    </button>
+                                    <div
+                                        className={`overflow-hidden transition-all duration-300 max-w-[550px] ${open === i ? 'max-h-[500px] opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                                    >
+                                        <p className="text-sm text-gray-600 leading-relaxed">
+                                            {q.answer}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
