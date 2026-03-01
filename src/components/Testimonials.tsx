@@ -66,7 +66,7 @@ export default function Testimonials() {
                     label="[CLIENT TESTIMONIALS]"
                     heading={
                         <>
-                            <span className="italic text-[var(--color-accent-purple)]">Trusted</span> by Those Who Matter
+                            <span className="text-[var(--color-accent-purple)]">Trusted</span> by Those Who Matter
                         </>
                     }
                     subtitle="Our clients' trust is earned through consistent results, clear communication, and measurable impact. Their experiences reflect the standards we uphold in every partnership."

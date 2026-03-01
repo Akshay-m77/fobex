@@ -42,7 +42,7 @@ export default function FAQ() {
                     label="[FOR CURIOUS MIND]"
                     heading={
                         <>
-                            Frequently <span className="italic text-[var(--color-accent-purple)]">asked</span> Questions
+                            Frequently <span className="text-[var(--color-accent-purple)]">asked</span> Questions
                         </>
                     }
                     subtitle="Interested in working with us but have a few questions? We've answered the most common ones here. For anything more specific, our team is always happy to help—just reach out."
@@ -56,7 +56,7 @@ export default function FAQ() {
                                 onClick={() => setOpen(open === i ? null : i)}
                                 className="w-full flex items-center justify-between py-5 text-left cursor-pointer group"
                             >
-                                <span className="text-sm font-medium text-gray-900 group-hover:text-[var(--color-accent-purple)] group-hover:translate-x-2 transition-all duration-300">
+                                <span className="text-sm italic font-medium text-gray-900 group-hover:text-[var(--color-accent-purple)] group-hover:translate-x-2 transition-all duration-300">
                                     {q.question}
                                 </span>
                                 <span className={`text-gray-400 text-xl leading-none transition-all duration-300 group-hover:scale-125 group-hover:text-[var(--color-accent-purple)] ${open === i ? 'rotate-45 !text-[var(--color-accent-purple)]' : ''}`}>

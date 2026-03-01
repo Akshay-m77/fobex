@@ -80,7 +80,7 @@ export default function Industries() {
                     heading={
                         <>
                             Serving Businesses Across{' '}
-                            <span className="italic text-[var(--color-accent-purple)]">Industries</span>
+                            <span className="text-[var(--color-accent-purple)]">Industries</span>
                         </>
                     }
                     subtitle="From startups to established enterprises, we serve a wide range of industries. Each solution is crafted to match industry-specific needs and customer behavior. Helping businesses grow with confidence through smart digital innovation."
