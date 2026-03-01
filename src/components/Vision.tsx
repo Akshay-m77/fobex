@@ -75,7 +75,7 @@ function ScrollRevealSection({
             }
 
             // Word becomes bold as it lights up
-            wordEl.style.fontWeight = reveal > 0.4 ? '700' : '300';
+            wordEl.style.fontWeight = reveal > 0.4 ? '400' : '300';
         });
     }, [allWords.length, dark]);
 
@@ -94,14 +94,14 @@ function ScrollRevealSection({
                 <div className="max-w-[800px] mx-auto px-6 text-center">
                     {/* Label */}
                     <p
-                        className={`text-sm tracking-wide mb-8 font-normal ${dark ? 'text-gray-500' : 'text-gray-400'
+                        className={`text-lg max-md:text-base tracking-wide mb-10 font-normal ${dark ? 'text-white/80' : 'text-gray-900'
                             }`}
                     >
                         {label}
                     </p>
 
                     {/* Main statement with word-by-word scroll reveal */}
-                    <h2 className="text-[2.75rem] max-md:text-[1.75rem] leading-[1.3] cursor-default transition-all">
+                    <h2 className="text-[3.25rem] max-md:text-[2rem] leading-[1.3] cursor-default transition-all">
                         {allWords.map((word, i) => (
                             <span
                                 key={i}
