@@ -47,10 +47,16 @@
  * These are outside @theme because Tailwind doesn't need them as utilities.
  */
 :root {
+  /* Colors */
   --accent-purple-rgb: 124, 58, 237;
   --accent-blue-rgb: 59, 130, 246;
   --white-rgb: 255, 255, 255;
   --bg-primary-rgb: 10, 10, 15;
+
+  /* Global Layout Sizes */
+  --container-lg: 95%;
+  --container-md: 90%;
+  --container-sm: 85%;
 }
 
 /* Base styles */

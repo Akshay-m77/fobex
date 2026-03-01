@@ -61,7 +61,7 @@ const steps = [
 export default function Process() {
     return (
         <section id="process" className="bg-[var(--color-bg-light-alt)] py-20 max-md:py-14">
-            <div className="max-w-[1100px] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 <SectionHeader
                     label="[The Execution Strategy]"
                     heading={

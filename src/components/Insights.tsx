@@ -32,7 +32,7 @@ const insights = [
 export default function Insights() {
     return (
         <section id="insights" className="bg-white py-24 w-full overflow-hidden">
-            <div className="max-w-[1200px] mx-auto px-6 max-md:px-5">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6 max-md:px-5">
                 <div className="mb-12">
                     <p className="text-gray-600 text-[11px] font-medium tracking-wide mb-3">[INSIGHTS]</p>
                     <h2 className="text-[2.75rem] leading-tight md:text-5xl font-medium tracking-tight text-black">
@@ -41,7 +41,7 @@ export default function Insights() {
                 </div>
             </div>
 
-            <div className="max-w-[1200px] mx-auto pl-6 max-md:pl-5 pr-6 md:pr-0">
+            <div className="max-w-[var(--container-lg)] mx-auto pl-6 max-md:pl-5 pr-6 md:pr-0">
                 <div
                     className="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory scrollbar-hide"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}

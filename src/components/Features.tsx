@@ -38,7 +38,7 @@ export default function Features() {
 
     return (
         <section className="bg-[var(--color-bg-white)] py-24 max-md:py-16" id="features">
-            <div className="max-w-[1100px] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 {/* Header */}
                 <div className="text-center mb-14">
                     <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-bold leading-[1.2] tracking-[-0.02em] text-gray-900 mb-5">

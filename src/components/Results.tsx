@@ -21,7 +21,7 @@ const projects = [
 export default function Results() {
     return (
         <section className="bg-[var(--color-bg-white)] py-24 max-md:py-16" id="results">
-            <div className="max-w-[1100px] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 <SectionHeader
                     label="[RESULTS DELIVERED]"
                     heading={

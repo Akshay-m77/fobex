@@ -32,7 +32,7 @@ export default function SectionHeader({
             </h2>
             {subtitle && (
                 <p
-                    className={`text-sm max-w-[560px] mx-auto leading-relaxed ${dark ? 'text-gray-400' : 'text-gray-500'
+                    className={`text-sm max-w-[700px] mx-auto leading-relaxed ${dark ? 'text-gray-400' : 'text-gray-500'
                         }`}
                 >
                     {subtitle}

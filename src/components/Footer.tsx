@@ -33,7 +33,7 @@ export default function Footer() {
                 </svg>
             </div>
 
-            <div className="max-w-[1100px] mx-auto px-6 relative z-10">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6 relative z-10">
                 {/* Top row: Heading + Logo */}
                 <div className="flex items-start justify-between mb-12 max-md:flex-col max-md:gap-8">
                     <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-bold italic leading-[1.2] text-white">

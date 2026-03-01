@@ -37,7 +37,7 @@ export default function FAQ() {
 
     return (
         <section className="bg-[var(--color-bg-light)] py-24 max-md:py-16" id="faq">
-            <div className="max-w-[700px] mx-auto px-6">
+            <div className="max-w-[var(--container-sm)] mx-auto px-6">
                 <SectionHeader
                     label="[FOR CURIOUS MIND]"
                     heading={

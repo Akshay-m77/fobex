@@ -46,9 +46,9 @@ export default function Hero() {
             </div>
 
             {/* Content */}
-            <div className="max-w-[1200px] mx-auto px-6 max-md:px-5 relative z-10 w-full max-md:mt-[40%]">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6 max-md:px-5 relative z-10 w-full max-md:mt-[40%]">
                 {/* Title — left aligned */}
-                <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-bold max-md:not-italic italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[700px]">
+                <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-bold max-md:not-italic italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">
                     <span className="text-white max-md:block">One Partner.</span>
                     <span className="max-md:hidden"> </span>
                     <br className="md:hidden" />

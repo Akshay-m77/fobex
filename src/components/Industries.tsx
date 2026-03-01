@@ -74,7 +74,7 @@ export default function Industries() {
 
     return (
         <section className="bg-[var(--color-bg-dark)] py-24 max-md:py-16" id="industries">
-            <div className="max-w-[1100px] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 <SectionHeader
                     label="[INDUSTRIES WE SERVE]"
                     heading={
