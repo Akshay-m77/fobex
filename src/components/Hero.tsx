@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import heroImg from '../assets/hero-img.png';
+import heroMobileBg from '../assets/hero bg.png';
 import ArrowButton from './ui/ArrowButton';
 import { ChevronDownIcon } from './ui/Icons';
 
@@ -9,10 +10,10 @@ export default function Hero() {
     return (
         <section
             ref={heroRef}
-            className="relative min-h-screen flex items-end overflow-hidden pb-20 pt-24 max-md:pb-0"
+            className="relative min-h-screen max-md:min-h-[95vh] flex items-end overflow-hidden pb-20 pt-24 max-md:pb-0"
         >
             {/* Background gradient */}
-            <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 pointer-events-none max-md:hidden">
                 <div
                     className="absolute w-[600px] h-[600px] rounded-full blur-[120px] -top-[10%] -left-[10%]"
                     style={{
@@ -28,8 +29,13 @@ export default function Hero() {
                 />
             </div>
 
-            {/* Hero image — top right */}
-            <div className="absolute top-0 right-0 w-[55%] max-md:w-[120%] max-md:-right-[20%] max-md:-top-[5%] max-md:opacity-100 h-[75%] max-md:h-[55%] pointer-events-none z-0">
+            {/* Mobile hero background */}
+            <div className="absolute inset-0 hidden max-md:block pointer-events-none z-0">
+                <img src={heroMobileBg} alt="Mobile Hero Background" className="w-full h-full object-cover object-center" />
+            </div>
+
+            {/* Hero image — top right (Desktop) */}
+            <div className="absolute top-0 right-0 w-[55%] max-md:hidden h-[75%] pointer-events-none z-0">
                 <div className="w-full h-full animate-zoom-out-fit [animation-delay:0.1s] origin-top-right">
                     <img
                         src={heroImg}
