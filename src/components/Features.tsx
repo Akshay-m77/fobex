@@ -1,35 +1,42 @@
 import { useState } from 'react';
 
+import img1 from '../assets/features/Group 1.png';
+import img2 from '../assets/features/Group 2.png';
+import img3 from '../assets/features/Group 3.png';
+import img4 from '../assets/features/Group 4.png';
+import img5 from '../assets/features/Group 5.png';
+import img6 from '../assets/features/Group 6.png';
+
 const services = [
     {
         title: 'Web & Mobile Development ',
         description: 'World-beating, future ready apps and websites designed to scale fast.',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop',
+        image: img1,
     },
     {
         title: 'Search Engine Optimization',
         description: 'Smart visibility strategies that turn your website into a lead generation machine. ',
-        image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2670&auto=format&fit=crop',
+        image: img2,
     },
     {
         title: 'Product Design ',
         description: 'Delightful digital products designed to drive revenue and seamless user experiences.',
-        image: 'https://images.unsplash.com/photo-1627398246609-edf64fc019ec?q=80&w=2574&auto=format&fit=crop',
+        image: img3,
     },
     {
         title: 'Branding & Creatives',
         description: 'Strategic brand planning and data driven decisions to reach your goals fast.',
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop',
+        image: img4,
     },
     {
         title: 'Product Management ',
         description: 'Expert team coordination to deliver jaw-dropping products on time and on budget.',
-        image: 'https://images.unsplash.com/photo-1618005191295-a226b9a80e1c?q=80&w=2564&auto=format&fit=crop',
+        image: img5,
     },
     {
         title: 'Photo & Video Production',
         description: 'Stunning visual content that showcases your brand in the best possible light.',
-        image: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2564&auto=format&fit=crop',
+        image: img6,
     },
 ];
 
@@ -55,22 +62,19 @@ export default function Features() {
                     {services.map((s, i) => (
                         <div
                             key={i}
-                            className={`group rounded-xl border bg-white overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)] ${i === 0
-                                ? 'border-teal-400 border-2'
-                                : 'border-gray-200'
-                                }`}
+                            className="group bg-[#F4F8FF] overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)]"
                         >
                             {/* Image thumbnail */}
                             <div className="overflow-hidden bg-black">
-                                <div className="h-44 w-full relative transition-transform duration-500 group-hover:scale-105">
-                                    <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="h-44 w-full relative transition-transform duration-700 ease-out group-hover:scale-110">
+                                    <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                                 </div>
                             </div>
 
                             {/* Text content */}
-                            <div className="p-5">
-                                <h3 className="text-base font-medium text-gray-900 mb-1.5">
+                            <div className="p-5 pt-6">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-4 pb-3 relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-[#8B5CF6]">
                                     {s.title}
                                 </h3>
                                 <p className="text-xs text-gray-500 leading-relaxed">
