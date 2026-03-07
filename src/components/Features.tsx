@@ -66,18 +66,19 @@ export default function Features() {
                         >
                             {/* Image thumbnail */}
                             <div className="overflow-hidden bg-black">
-                                <div className="h-44 w-full relative transition-transform duration-700 ease-out group-hover:scale-110">
+                                <div className="h-32 w-full relative transition-transform duration-700 ease-out group-hover:scale-110">
                                     <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                                 </div>
                             </div>
 
                             {/* Text content */}
-                            <div className="p-5 pt-6">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-4 pb-3 relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-[#8B5CF6]">
+                            <div className="p-8 pt-6">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-1 inline-block relative pb-1
+after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[95%] after:bg-[#8B5CF6]">
                                     {s.title}
                                 </h3>
-                                <p className="text-xs text-gray-500 leading-relaxed">
+                                <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                                     {s.description}
                                 </p>
                             </div>
@@ -91,7 +92,7 @@ export default function Features() {
                         <div key={i} onClick={() => setActiveFeature(i)} className="cursor-pointer">
                             {activeFeature === i ? (
                                 <div className="w-full relative overflow-hidden transition-all duration-500 bg-black">
-                                    <div className="h-44 relative w-full">
+                                    <div className="h-40 relative w-full">
                                         <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-80" />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
