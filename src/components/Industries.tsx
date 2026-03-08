@@ -8,46 +8,46 @@ const industries = [
         name: 'HealthCare',
         image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop',
         paragraphs: [
-            'At Pixelsmiths, we help healthcare providers deliver seamless, patient-centric digital experiences.',
-            'Our solutions improve appointment booking, patient engagement, and operational efficiency through intuitive design and secure technology.',
+            'At Fobex, we build secure, highly accessible patient portals for clinics and medical facilities.',
+            'Our custom platforms take the friction out of daily appointment scheduling for your staff, while giving your patients complete peace of mind through clean interface design and robust data protection.',
         ],
         cta: 'Learn more about how we serves in healthcare',
     },
     {
-        name: 'Retail & Ecommerce',
+        name: 'Travel and Tourism',
         image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop',
         paragraphs: [
-            'We build powerful ecommerce platforms that drive sales and deliver exceptional shopping experiences.',
-            'From product discovery to checkout, our solutions optimize every touchpoint for conversion and customer satisfaction.',
+            'At Fobex, we help travel brands and tourism agencies deliver a completely frictionless online booking journey.',
+            'By combining custom web development with targeted search optimization, we help you capture global travelers and turn that digital traffic into direct, highly profitable reservations.',
         ],
-        cta: 'Learn more about how we serves in retail',
+        cta: 'Learn more about how we serves in travel and tourism',
     },
     {
-        name: 'Logistics & Supply Chain',
+        name: 'Retail and E-Commerce',
         image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop',
         paragraphs: [
-            'We digitize supply chain operations with real-time tracking, route optimization, and warehouse management.',
-            'Our platforms help logistics companies reduce costs, improve delivery times, and gain end-to-end visibility.',
+            'At Fobex, we transition traditional retail operations into high-performing E-Commerce storefronts.',
+            'Our custom web solutions enable your retail brand to reach new heights of success through increased sales and customer loyalty.',
         ],
-        cta: 'Learn more about how we serves in logistics',
+        cta: 'Learn more about how we serves in retail and e-commerce',
     },
     {
-        name: 'Industrial Manufacturing',
+        name: 'Pharmaceuticals',
         image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&auto=format&fit=crop',
         paragraphs: [
-            'We create digital solutions that streamline manufacturing processes from shop floor to top floor.',
-            'Our IoT-integrated dashboards and ERP solutions help manufacturers boost productivity and reduce downtime.',
+            'At Fobex, we enable top pharmaceutical companies and research labs around the world to establish their presence through our cutting-edge web architecture solutions.',
+            'Our custom web solutions ensure maximum medical compliance for your brand and enable you to communicate your innovative medical research to the world.',
         ],
-        cta: 'Learn more about how we serves in manufacturing',
+        cta: 'Learn more about how we serves in pharmaceuticals',
     },
     {
-        name: 'Banking & Finance',
+        name: 'Luxury Goods and Jewellery',
         image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop',
         paragraphs: [
-            'We build secure, compliant fintech solutions that modernize banking and financial services.',
-            'From digital wallets to portfolio management, our platforms drive financial inclusion and customer trust.',
+            'At Fobex, we transform the physical elegance of your premium products into a visually appealing and captivating digital platform.',
+            'We pair stunning visuals with incredibly smooth software, helping you attract premium buyers and showcase your exclusive brand to the world.',
         ],
-        cta: 'Learn more about how we serves in finance',
+        cta: 'Learn more about how we serves in luxury goods and jewellery',
     },
 ];
 
@@ -79,14 +79,15 @@ export default function Industries() {
 
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 <SectionHeader
-                    label="[INDUSTRIES WE SERVE]"
+                    label="[Solutions Built for Your Industry]"
                     heading={
                         <>
-                            Serving Businesses Across{' '}
-                            <span className="text-[var(--color-accent-purple)]">Industries</span>
+                            Driving Measurable Digital Growth <br className="hidden lg:block" />
+                            <span>Across </span>
+                            <span className="text-[var(--color-accent-purple)]">Every Industry</span>
                         </>
                     }
-                    subtitle="From startups to established enterprises, we serve a wide range of industries. Each solution is crafted to match industry-specific needs and customer behavior. Helping businesses grow with confidence through smart digital innovation."
+                    subtitle="Whether you are a fresh startup or a trusted enterprise, we build digital spaces that fit your exact needs. We focus heavily on how your ideal customers actually behave online, pairing smart technology with clean design to bring your business real, measurable growth."
                     dark
                 />
 

@@ -2,18 +2,18 @@ import SectionHeader from './ui/SectionHeader';
 
 const projects = [
     {
-        category: 'Hospitality',
-        title: "Trust.Travel: Portugal's Leading Local Rides & Hotel Booking Web Application",
+        category: 'Corporate Consulting',
+        title: "We partnered with a Bangalore-based marketing firm to build a powerful lead generation website, helping them attract more qualified clients and grow their revenue.",
         image: 'https://images.unsplash.com/photo-1522792011400-988365922c26?q=80&w=800&auto=format&fit=crop',
     },
     {
-        category: 'Corporate',
-        title: 'ALOT excels in diverse trading, innovating in distribution, production, and goods.',
+        category: 'Food and Beverage',
+        title: 'We transformed this growing Kerala cafe into a highly profitable client by building a custom digital identity and localized web platform. Our strategic local search optimization captured neighbourhood traffic, resulting in fully booked event spaces and a massive surge in daily physical sales.',
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
     },
     {
-        category: 'Healthcare / Hospitality',
-        title: 'Next Fitness Gym: Your Ultimate Destination for Fitness Goals and a Healthier Lifestyle.',
+        category: 'Vacations Travel Travel and Tourism',
+        title: 'As the dedicated technology partner for this UAE based travel client, we engineered a globally optimized booking application. By simplifying complex visa selections through intuitive user navigation, our custom software directly accelerated their online conversion rates and generated massive global booking profit.',
         image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
     },
 ];
