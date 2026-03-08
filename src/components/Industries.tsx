@@ -51,13 +51,6 @@ const industries = [
     },
 ];
 
-const TAB_NAMES = [
-    'Retail & Ecommerce',
-    'Logistics & Supply Chain',
-    'Industrial Manufacturing',
-    'Banking & Finance',
-];
-
 export default function Industries() {
     const [active, setActive] = useState(0);
     const current = industries[active];
@@ -72,8 +65,18 @@ export default function Industries() {
         return () => clearInterval(timer);
     }, [active]);
 
+    // Derived array of inactive industries for the bottom bar
+    const inactiveIndustries = industries.map((ind, idx) => ({ ...ind, originalIndex: idx })).filter((_, idx) => idx !== active);
+
     return (
         <section className="bg-[var(--color-bg-dark)] py-24 max-md:py-16" id="industries">
+            <style>{`
+                @keyframes fadeSlideUp {
+                    0% { opacity: 0; transform: translateY(15px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+            `}</style>
+
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 <SectionHeader
                     label="[INDUSTRIES WE SERVE]"
@@ -99,26 +102,42 @@ export default function Industries() {
                                 alt={current.name}
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                            <div className="absolute bottom-6 left-6 z-10">
-                                <h3 className="text-2xl font-medium text-white transition-transform duration-300 group-hover:translate-x-2">{current.name}</h3>
-                            </div>
-                        </div>
 
-                        {/* Industry tabs */}
-                        <div className="flex items-center gap-1 mt-4 flex-wrap">
-                            {TAB_NAMES.map((tab, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => setActive(i + 1)}
-                                    className={`text-xs px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-md ${active === i + 1
-                                        ? `text-white bg-[rgba(var(--accent-purple-rgb),0.2)]`
-                                        : 'text-gray-500 hover:text-gray-300'
-                                        }`}
+                            {/* Overlay Gradient */}
+                            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.4)_50%,transparent_100%)] pointer-events-none" />
+
+                            {/* Text Container at Bottom inside Image */}
+                            <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col justify-end">
+
+                                {/* Active Tab (Large Heading) */}
+                                <h3
+                                    key={`active-${active}`}
+                                    className="text-[3rem] max-md:text-[2rem] font-medium text-white mb-2 leading-tight"
+                                    style={{ animation: 'fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards' }}
                                 >
-                                    {tab}
-                                </button>
-                            ))}
+                                    {current.name}
+                                </h3>
+
+                                {/* Inactive Tabs List */}
+                                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm max-md:text-xs">
+                                    {inactiveIndustries.map((ind, idx, arr) => (
+                                        <div key={ind.originalIndex} className="flex items-center gap-2.5">
+                                            <span
+                                                className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setActive(ind.originalIndex);
+                                                }}
+                                            >
+                                                {ind.name}
+                                            </span>
+                                            {idx < arr.length - 1 && (
+                                                <span className="text-gray-600 font-bold text-[10px]">•</span>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
