@@ -28,8 +28,8 @@ export default function ArrowButton({
 
     const variantClasses =
         variant === 'dark'
-            ? 'bg-gray-900 text-gray-300 group-hover:text-white border border-[#9D31FF] before:bg-[#9D31FF]'
-            : 'border border-[#9D31FF] text-gray-300 group-hover:text-white before:bg-[#9D31FF]';
+            ? 'bg-gray-900 border border-[#9D31FF] before:bg-[#9D31FF]'
+            : 'border border-[#9D31FF] before:bg-[#9D31FF]';
 
     const animationClasses = 'before:absolute before:inset-0 before:w-full before:h-full before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-500 before:ease-out before:z-0';
 
@@ -37,8 +37,8 @@ export default function ArrowButton({
 
     const inner = (
         <>
-            <span className="relative z-10">{children}</span>
-            <span className="w-9 h-9 rounded-full bg-[var(--color-accent-purple)] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform relative z-10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+            <span className="relative z-10 text-gray-300 group-hover:text-black group-hover:font-medium transition-all duration-300">{children}</span>
+            <span className="w-9 h-9 rounded-full bg-[var(--color-accent-purple)] flex items-center justify-center text-white group-hover:text-black shrink-0 group-hover:scale-105 transition-all duration-300 relative z-10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">
                 <ArrowIcon />
             </span>
         </>
