@@ -52,7 +52,7 @@ export default function Hero() {
             </div>
 
             {/* Content */}
-            <div className="max-w-[var(--container-lg)] mx-auto px-6 max-md:px-5 relative z-10 w-full xl:pl-[95px]">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6 max-md:px-5 relative z-10 w-full">
                 {/* Title — left aligned */}
                 <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-medium max-md:not-italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">
                     <span className="block">
@@ -77,15 +77,15 @@ export default function Hero() {
                     </ArrowButton>
                 </div>
 
-                {/* Gradient flow scroll indicator (desktop) */}
-                <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 max-md:hidden h-24 w-[1px] bg-white/10 overflow-hidden">
-                    <div className="w-full h-1/2 bg-gradient-to-b from-transparent via-[#a855f7] to-transparent animate-gradient-flow" />
-                </div>
-
                 {/* Bouncing arrow (mobile) */}
                 <div className="flex justify-center md:hidden pt-12 pb-6 w-full text-white animate-bounce">
                     <ChevronDownIcon size={24} />
                 </div>
+            </div>
+
+            {/* Gradient flow scroll indicator (desktop) */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 max-md:hidden h-24 w-[1px] bg-white/10 overflow-hidden z-20">
+                <div className="w-full h-1/2 bg-gradient-to-b from-transparent via-[#a855f7] to-transparent animate-gradient-flow" />
             </div>
         </section>
     );
