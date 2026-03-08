@@ -72,10 +72,7 @@ body {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-blue), var(--color-accent-cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #9D31FF;
 }
 
 /* Gradient button */
