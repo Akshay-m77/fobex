@@ -35,7 +35,7 @@ export default function Insights() {
             <div className="max-w-[var(--container-lg)] mx-auto px-6 max-md:px-5">
                 <div className="mb-12">
                     <p className="text-gray-600 text-[11px] font-medium tracking-wide mb-3">[INSIGHTS]</p>
-                    <h2 className="text-[2.75rem] leading-tight md:text-5xl font-medium tracking-tight text-black">
+                    <h2 className="text-[3.5rem] max-md:text-[2.2rem] leading-tight font-medium tracking-tight text-black">
                         <span className="text-[#3b1d5c]">Insights</span> for Smarter Decisions
                     </h2>
                 </div>

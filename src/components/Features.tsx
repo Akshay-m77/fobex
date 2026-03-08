@@ -48,7 +48,7 @@ export default function Features() {
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 {/* Header */}
                 <div className="text-center mb-14">
-                    <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-medium leading-[1.2] tracking-[-0.02em] text-gray-900 mb-5">
+                    <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.2] tracking-[-0.02em] text-gray-900 mb-5">
                         We work with forward-thinking brands <br /> to create high-quality digital spaces.
                     </h2>
                     <p className="text-sm text-gray-500 max-w-[520px] mx-auto leading-relaxed">

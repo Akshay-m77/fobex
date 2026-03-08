@@ -101,7 +101,7 @@ function ScrollRevealSection({
                     </p>
 
                     {/* Main statement with word-by-word scroll reveal */}
-                    <h2 className="text-[3.25rem] max-md:text-[2rem] leading-[1.3] cursor-default transition-all">
+                    <h2 className="text-[3.5rem] max-md:text-[2.2rem] leading-[1.3] cursor-default transition-all">
                         {allWords.map((word, i) => (
                             <span
                                 key={i}

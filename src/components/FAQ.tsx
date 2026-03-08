@@ -44,7 +44,7 @@ export default function FAQ() {
                             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent-purple)] mb-4">
                                 [FOR CURIOUS MIND]
                             </p>
-                            <h2 className="text-[2.5rem] max-md:text-[1.75rem] font-medium leading-[1.2] tracking-[-0.02em] mb-5 text-gray-900">
+                            <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.2] tracking-[-0.02em] mb-5 text-gray-900">
                                 Frequently <span className="text-[var(--color-accent-purple)]">asked</span> Questions
                             </h2>
                             <p className="text-sm leading-relaxed text-gray-500 max-w-[600px]">
