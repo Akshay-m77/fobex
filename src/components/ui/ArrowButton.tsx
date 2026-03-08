@@ -28,8 +28,8 @@ export default function ArrowButton({
 
     const variantClasses =
         variant === 'dark'
-            ? 'bg-gray-900 text-gray-300 hover:text-white border border-gray-900 before:bg-gray-800'
-            : 'border border-[#9D31FF] text-gray-300 hover:text-white before:bg-[#9D31FF]';
+            ? 'bg-gray-900 text-gray-300 group-hover:text-white border border-[#9D31FF] before:bg-[#9D31FF]'
+            : 'border border-[#9D31FF] text-gray-300 group-hover:text-white before:bg-[#9D31FF]';
 
     const animationClasses = 'before:absolute before:inset-0 before:w-full before:h-full before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-500 before:ease-out before:z-0';
 
