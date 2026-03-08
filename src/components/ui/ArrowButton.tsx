@@ -23,20 +23,22 @@ export default function ArrowButton({
     className = '',
     fullWidth = false,
 }: ArrowButtonProps) {
-    const baseClasses = `inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full text-sm transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-lg ${fullWidth ? 'w-full justify-between' : ''
+    const baseClasses = `relative inline-flex items-center italic gap-12 pl-6 pr-2 py-2 rounded-full text-sm transition-all duration-500 group cursor-pointer overflow-hidden ${fullWidth ? 'w-full justify-between' : ''
         }`;
 
     const variantClasses =
         variant === 'dark'
-            ? 'bg-gray-900 text-gray-300 hover:bg-gray-800'
-            : 'bg-[var(--color-overlay-light)] border border-[var(--color-border-light)] text-gray-300 hover:bg-[var(--color-overlay-hover)] hover:border-[var(--color-overlay-hover-border)]';
+            ? 'bg-gray-900 text-gray-300 hover:text-white border border-gray-900 before:bg-gray-800'
+            : 'border border-[#9D31FF] text-gray-300 hover:text-white before:bg-[#9D31FF]';
 
-    const classes = `${baseClasses} ${variantClasses} ${className}`;
+    const animationClasses = 'before:absolute before:inset-0 before:w-full before:h-full before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-500 before:ease-out before:z-0';
+
+    const classes = `${baseClasses} ${variantClasses} ${animationClasses} ${className}`;
 
     const inner = (
         <>
-            {children}
-            <span className="w-9 h-9 rounded-full bg-[var(--color-accent-purple)] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
+            <span className="relative z-10">{children}</span>
+            <span className="w-9 h-9 rounded-full bg-[var(--color-accent-purple)] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform relative z-10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">
                 <ArrowIcon />
             </span>
         </>

@@ -56,14 +56,14 @@ export default function Hero() {
                 {/* Title — left aligned */}
                 <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-medium max-md:not-italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">
                     <span className="block">
-                        <span className="text-white">One Partner </span>
+                        <span className="text-white">One Partner - </span>
                         <span className="gradient-text">Every Digital Edge</span>
                     </span>
                     <span className="text-white block">Your Brand Needs</span>
                 </h1>
 
                 {/* Description */}
-                <p className="text-sm max-md:text-[13px] text-gray-400 max-w-[480px] leading-relaxed max-md:leading-[1.6] mb-8 max-md:mb-10 max-md:pr-4">
+                <p className="text-sm max-md:text-[13px] text-gray-400 max-w-[680px] leading-relaxed max-md:leading-[1.6] mb-8 max-md:mb-10 max-md:pr-4">
                     Our story isn't just about code or design; we look at your complete business landscape. Our foundation is built on superior React apps and high-end mobile development. We integrate expert product leadership and video to build the next chapter of your brand.
                 </p>
 
@@ -78,7 +78,7 @@ export default function Hero() {
                 </div>
 
                 {/* Gradient flow scroll indicator (desktop) */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 max-md:hidden h-24 w-[1px] bg-white/10 overflow-hidden">
+                <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 max-md:hidden h-24 w-[1px] bg-white/10 overflow-hidden">
                     <div className="w-full h-1/2 bg-gradient-to-b from-transparent via-[#a855f7] to-transparent animate-gradient-flow" />
                 </div>
 
