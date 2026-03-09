@@ -10,7 +10,7 @@ export default function Hero() {
     return (
         <section
             ref={heroRef}
-            className="relative min-h-screen max-md:min-h-[85vh] flex flex-col pt-[40vh] justify-start max-md:pt-[120px] overflow-hidden"
+            className="relative min-h-screen max-md:min-h-[85vh] flex flex-col pt-[40vh] justify-start max-md:pt-[200px] overflow-hidden"
         >
             {/* Background gradient */}
             <div className="absolute inset-0 pointer-events-none max-md:hidden">
