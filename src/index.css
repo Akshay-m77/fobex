@@ -55,13 +55,34 @@
 
   /* Global Layout Sizes */
   --container-lg: 90%;
-  --container-md: 90%;
-  --container-sm: 95%;
+  --container-md: 94%;
+  --container-sm: 98%;
 }
 
 /* Base styles */
+* {
+  outline: 1px solid red;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+/* Global Padding Utility */
+.section-padding {
+  padding-left: 1.5rem;
+  /* px-6 */
+  padding-right: 1.5rem;
+  /* px-6 */
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-left: 0.75rem;
+    /* px-3 */
+    padding-right: 0.75rem;
+    /* px-3 */
+  }
 }
 
 body {

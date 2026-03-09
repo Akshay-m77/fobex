@@ -77,7 +77,7 @@ export default function Industries() {
                 }
             `}</style>
 
-            <div className="max-w-[var(--container-lg)] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto section-padding">
                 <SectionHeader
                     label="[Solutions Built for Your Industry]"
                     heading={

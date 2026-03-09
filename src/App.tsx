@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="w-full relative">
         <Hero />
         <Features />
         <Process />
