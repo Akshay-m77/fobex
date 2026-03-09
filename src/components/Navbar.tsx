@@ -37,9 +37,9 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                ? 'bg-white shadow-[0_2px_20px_rgba(0,0,0,0.06)] border-b border-gray-100 h-[72px]'
-                : 'bg-transparent h-[90px]'
+            className={`fixed top-0 left-0 right-0 z-50 border-b ${scrolled
+                ? 'bg-white shadow-[0_2px_20px_rgba(0,0,0,0.06)] border-gray-100 h-[72px]'
+                : 'bg-transparent border-transparent h-[90px]'
                 }`}
         >
             <div className="max-w-[var(--container-lg)] mx-auto px-6 h-full flex items-center justify-between max-md:justify-start max-md:gap-4">
