@@ -42,7 +42,7 @@ export default function Navbar() {
                 : 'bg-transparent border-transparent h-[90px]'
                 }`}
         >
-            <div className="max-w-[var(--container-lg)] mx-auto section-padding h-full flex items-center justify-between max-md:justify-start max-md:gap-4">
+            <div className="max-w-[var(--container-lg)] mx-auto px-6 h-full flex items-center justify-between max-md:justify-start max-md:gap-4">
                 <div className="flex items-center h-full gap-12 max-md:gap-0">
                     {/* Logo */}
                     <a href="#" className={`flex items-center -mt-1 z-[1001] transition-all duration-300 hover:scale-105`}>

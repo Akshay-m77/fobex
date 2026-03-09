@@ -91,7 +91,7 @@ function ScrollRevealSection({
             className={`relative h-[150vh] ${dark ? 'bg-[var(--color-bg-primary)]' : 'bg-white'}`}
         >
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden w-full">
-                <div className="max-w-[var(--container-md)] mx-auto section-padding text-center">
+                <div className="max-w-[var(--container-md)] mx-auto px-6 text-center">
                     {/* Label */}
                     <p
                         className={`text-lg max-md:text-base tracking-wide mb-10 font-normal ${dark ? 'text-white/80' : 'text-gray-900'
