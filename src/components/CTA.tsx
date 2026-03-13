@@ -1,8 +1,73 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ArrowButton from './ui/ArrowButton';
+
+const COUNTRIES = [
+    { code: 'IN', dialCode: '+91', flag: '🇮🇳', name: 'India' },
+    { code: 'US', dialCode: '+1', flag: '🇺🇸', name: 'United States' },
+    { code: 'GB', dialCode: '+44', flag: '🇬🇧', name: 'United Kingdom' },
+    { code: 'AU', dialCode: '+61', flag: '🇦🇺', name: 'Australia' },
+    { code: 'CA', dialCode: '+1', flag: '🇨🇦', name: 'Canada' },
+    { code: 'AE', dialCode: '+971', flag: '🇦🇪', name: 'United Arab Emirates' },
+    { code: 'SG', dialCode: '+65', flag: '🇸🇬', name: 'Singapore' },
+    { code: 'DE', dialCode: '+49', flag: '🇩🇪', name: 'Germany' },
+];
 
 export default function CTA() {
     const [nda, setNda] = useState(false);
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsDropdownOpen(false);
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        const data = {
+            name: name,
+            phone: `'${selectedCountry.dialCode} ${phone}`,
+            email: email,
+            message: message,
+            secret: import.meta.env.VITE_FORM_SECRET
+        };
+
+        try {
+            await fetch(import.meta.env.VITE_GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify(data)
+            });
+            alert("Form submitted successfully!");
+            setName('');
+            setPhone('');
+            setEmail('');
+            setMessage('');
+            setNda(false);
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("An error occurred while submitting the form. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <section className="bg-[var(--color-bg-dark-alt)] py-24 max-md:py-16 border-t-4 border-[var(--color-accent-purple)]" id="contact">
@@ -51,29 +116,59 @@ export default function CTA() {
 
                     {/* Right — Contact Form */}
                     <div className="flex-1 min-w-0">
-                        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-5">
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                             {/* Full Name */}
                             <FormField label="Full Name" required>
                                 <input
                                     type="text"
                                     placeholder="Name..."
                                     className="form-input"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
                                 />
                             </FormField>
 
                             {/* Primary Contact Number */}
                             <FormField label="Primary Contact Number" required>
-                                <div className="flex gap-2">
-                                    <div className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0`}>
-                                        <span className="text-base">🇮🇳</span>
-                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                <div className="flex gap-2 relative" ref={dropdownRef}>
+                                    <div 
+                                        className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-colors hover:bg-[rgba(var(--white-rgb),0.08)]`}
+                                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                    >
+                                        <span className="text-base">{selectedCountry.flag}</span>
+                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}>
                                             <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </div>
+
+                                    {/* Dropdown Menu */}
+                                    {isDropdownOpen && (
+                                        <div className="absolute top-[calc(100%+8px)] left-0 w-[240px] bg-[#1a1a2e] border border-[rgba(var(--white-rgb),0.1)] rounded-xl shadow-xl z-50 py-2 max-h-[300px] overflow-y-auto">
+                                            {COUNTRIES.map((country) => (
+                                                <div 
+                                                    key={country.code}
+                                                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-[rgba(var(--white-rgb),0.05)] cursor-pointer transition-colors text-sm text-gray-300"
+                                                    onClick={() => {
+                                                        setSelectedCountry(country);
+                                                        setIsDropdownOpen(false);
+                                                    }}
+                                                >
+                                                    <span className="text-xl">{country.flag}</span>
+                                                    <span className="w-12 text-gray-400 font-medium">{country.dialCode}</span>
+                                                    <span className="truncate">{country.name}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+
                                     <input
                                         type="tel"
-                                        placeholder="+91"
+                                        placeholder={selectedCountry.dialCode}
                                         className="form-input"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        required
                                     />
                                 </div>
                             </FormField>
@@ -84,6 +179,9 @@ export default function CTA() {
                                     type="email"
                                     placeholder="Email...."
                                     className="form-input"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
                                 />
                             </FormField>
 
@@ -100,6 +198,8 @@ export default function CTA() {
                                 <textarea
                                     rows={4}
                                     className="form-input resize-none"
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
                                 />
                             </FormField>
 
@@ -117,8 +217,8 @@ export default function CTA() {
                             </label>
 
                             {/* Submit Button */}
-                            <ArrowButton type="submit" fullWidth>
-                                Submit Enquiry
+                            <ArrowButton type="submit" fullWidth disabled={isSubmitting}>
+                                {isSubmitting ? "Submitting..." : "Submit Enquiry"}
                             </ArrowButton>
 
                             {/* Privacy disclaimer */}

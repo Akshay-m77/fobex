@@ -8,6 +8,7 @@ interface ArrowButtonProps {
     type?: 'button' | 'submit';
     className?: string;
     fullWidth?: boolean;
+    disabled?: boolean;
 }
 
 /**
@@ -22,23 +23,24 @@ export default function ArrowButton({
     type = 'button',
     className = '',
     fullWidth = false,
+    disabled = false,
 }: ArrowButtonProps) {
-    const baseClasses = `relative inline-flex items-center italic gap-12 pl-6 pr-2 py-2 rounded-full text-sm transition-all duration-500 group cursor-pointer overflow-hidden ${fullWidth ? 'w-full justify-between' : ''
-        }`;
+    const baseClasses = `relative inline-flex items-center italic gap-12 pl-6 pr-2 py-2 rounded-full text-sm transition-all duration-500 overflow-hidden ${fullWidth ? 'w-full justify-between' : ''
+        } ${disabled ? 'opacity-50 cursor-not-allowed' : 'group cursor-pointer'}`;
 
     const variantClasses =
         variant === 'dark'
             ? 'bg-gray-900 border border-[#9D31FF] before:bg-[#9D31FF]'
             : 'border border-[#9D31FF] before:bg-[#9D31FF]';
 
-    const animationClasses = 'before:absolute before:inset-0 before:w-full before:h-full before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-500 before:ease-out before:z-0';
+    const animationClasses = disabled ? '' : 'before:absolute before:inset-0 before:w-full before:h-full before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-500 before:ease-out before:z-0';
 
     const classes = `${baseClasses} ${variantClasses} ${animationClasses} ${className}`;
 
     const inner = (
         <>
-            <span className="relative z-10 text-gray-300 group-hover:text-black transition-all duration-300">{children}</span>
-            <span className="w-9 h-9 rounded-full bg-[var(--color-accent-purple)] flex items-center justify-center text-white group-hover:text-black shrink-0 group-hover:scale-105 transition-all duration-300 relative z-10 shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+            <span className={`relative z-10 text-gray-300 transition-all duration-300 ${disabled ? '' : 'group-hover:text-black'}`}>{children}</span>
+            <span className={`w-9 h-9 rounded-full bg-[var(--color-accent-purple)] flex items-center justify-center text-white shrink-0 transition-all duration-300 relative z-10 shadow-[0_0_15px_rgba(139,92,246,0.3)] ${disabled ? '' : 'group-hover:text-black group-hover:scale-105'}`}>
                 <ArrowIcon />
             </span>
         </>
@@ -53,7 +55,7 @@ export default function ArrowButton({
     }
 
     return (
-        <button type={type} onClick={onClick} className={classes}>
+        <button type={type} onClick={onClick} className={classes} disabled={disabled}>
             {inner}
         </button>
     );
