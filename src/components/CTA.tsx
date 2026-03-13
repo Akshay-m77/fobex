@@ -40,13 +40,16 @@ export default function CTA() {
         const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
         const secret = import.meta.env.VITE_FORM_SECRET;
 
-        // Debug logging for production (can be removed after fix)
+        // Debug logging for production
         console.log("Form submission started...");
-        if (!scriptUrl) {
-            console.error("Configuration Error: VITE_GOOGLE_SCRIPT_URL is not defined.");
-            alert("Form configuration error. Please ensure environment variables are set up.");
+        console.log("VITE_GOOGLE_SCRIPT_URL value:", scriptUrl);
+
+        if (!scriptUrl || scriptUrl === 'undefined' || scriptUrl === '') {
+            console.error("Configuration Error: VITE_GOOGLE_SCRIPT_URL is not set or is 'undefined'.");
+            alert("Configuration Error: The form endpoint is not set up. If you are the owner, please add VITE_GOOGLE_SCRIPT_URL to your environment variables.");
             return;
         }
+
 
         setIsSubmitting(true);
 
