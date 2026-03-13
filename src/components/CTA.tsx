@@ -40,30 +40,23 @@ export default function CTA() {
         const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
         const secret = import.meta.env.VITE_FORM_SECRET;
 
-        // Debug logging for production
-        console.log("Form submission started...");
-        console.log("VITE_GOOGLE_SCRIPT_URL value:", scriptUrl);
-
-        if (!scriptUrl || scriptUrl === 'undefined' || scriptUrl === '') {
-            console.error("Configuration Error: VITE_GOOGLE_SCRIPT_URL is not set or is 'undefined'.");
-            alert("Configuration Error: The form endpoint is not set up. If you are the owner, please add VITE_GOOGLE_SCRIPT_URL to your environment variables.");
+        if (!scriptUrl || scriptUrl === 'undefined') {
+            alert("Configuration Error: The form endpoint is not set up correctly.");
             return;
         }
-
 
         setIsSubmitting(true);
 
         const data = {
-            name: name,
+            name,
             phone: `'${selectedCountry.dialCode} ${phone}`,
-            email: email,
-            message: message,
-            secret: secret
+            email,
+            message,
+            secret
         };
 
         try {
-            console.log("Fetching to:", scriptUrl);
-            const response = await fetch(scriptUrl, {
+            await fetch(scriptUrl, {
                 method: "POST",
                 mode: "no-cors",
                 headers: {
@@ -71,9 +64,6 @@ export default function CTA() {
                 },
                 body: JSON.stringify(data)
             });
-            
-            // Note: with no-cors, we won't get a meaningful response status
-            console.log("Fetch call completed (no-cors mode)");
             
             alert("Form submitted successfully!");
             setName('');
@@ -83,10 +73,11 @@ export default function CTA() {
             setNda(false);
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("An error occurred while submitting the form. Please try again or check your connection.");
+            alert("An error occurred while submitting the form. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
+
     };
 
 
