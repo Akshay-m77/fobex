@@ -5,42 +5,39 @@ import { ChevronLeftIcon, ChevronRightIcon } from './ui/Icons';
 
 const testimonials = [
     {
-        caseTitle: 'From Legacy to Seamless.',
-        caseDesc:
-            'From complexity to clarity: a digital transformation journey. With our expertise, the platform evolved into a scalable, high-performance solution.',
-        quoteTitle: 'They transformed how we work across Europe.',
+        caseTitle: 'Web Development',
+        caseDesc: 'Turning a slow platform into a high growth engine.',
+        quoteTitle: 'They built the technical foundation our business needed to scale.',
         quoteBody: [
-            'When we partnered with Pixelsmiths, our digital platform was outdated and fragmented, impacting efficiency and growth.',
-            'Their team took the time to understand our challenges, goals, and workflows, laying the foundation for a streamlined, scalable solution.',
+            'Before we started working with Fobex, our website would literally crawl whenever we had a spike in traffic. It crashed so often that we were actually looking for ways just to access our own data.',
+            "The team didn't just patch the bugs; they rebuilt our entire web architecture from scratch using React. Today, we have a blazing fast, secure, and scalable site that handles thousands of visitors at once without a single glitch.",
         ],
         rating: 5,
-        author: 'Bruce Lienoes',
+        author: 'Marcus Thorne | Operations Director',
         gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 50%, #1a1a2e 80%)',
     },
     {
-        caseTitle: 'Scaling with Confidence.',
-        caseDesc:
-            "A startup's journey from MVP to enterprise-grade platform. Our team delivered a robust architecture that scaled with growing demand.",
-        quoteTitle: "The best tech partner we've ever worked with.",
+        caseTitle: 'Design & UX',
+        caseDesc: 'Moving from a cluttered interface to a seamless journey.',
+        quoteTitle: 'Finally, a digital experience that our customers actually enjoy using.',
         quoteBody: [
-            "Pixelsmiths understood our vision from day one. They didn't just build a product — they built the foundation for our future.",
-            'Their iterative approach and transparent communication made the entire process smooth, even as requirements evolved.',
+            'Our app used to have a very messy interface, and it was a major pain point for our users.',
+            'The Fobex team took the time to truly understand how our customers think and delivered a design that is both simple and beautiful. Our engagement numbers are up across the board now because the entire experience feels effortless for our users.',
         ],
         rating: 5,
-        author: 'Sarah Mitchell',
+        author: 'Sarah Jenkins | Product Lead',
         gradient: 'linear-gradient(135deg, #2d1f3d 0%, #1a3a4a 40%, #3d6b5e 70%, #2d1f3d 100%)',
     },
     {
-        caseTitle: 'Digital-First Retail.',
-        caseDesc:
-            'Reimagining the retail experience through digital innovation. A complete overhaul that boosted online sales by 240% in 6 months.',
-        quoteTitle: 'Our online revenue tripled within the first quarter.',
+        caseTitle: 'SEO & Organic Traffic',
+        caseDesc: 'From being invisible to dominating the search results.',
+        quoteTitle: 'We went from being hard to find to the very top of the page.',
         quoteBody: [
-            'We needed a partner who could move fast without cutting corners. Pixelsmiths delivered a flawless ecommerce experience.',
-            'From UX research to launch, every decision was data-driven and user-focused. The results speak for themselves.',
+            "We knew we had a fantastic product, but we just didn't have the visibility to back it up.",
+            'Fobex helped us build a smart SEO strategy focused on the exact terms our customers are searching for. Our organic traffic has tripled since we started, and we are now consistently holding the top spot in search results. It has completely changed our lead generation.',
         ],
         rating: 5,
-        author: 'Daniel Park',
+        author: 'David Chen | Marketing Head',
         gradient: 'linear-gradient(135deg, #0a1628 0%, #162d50 40%, #1a3a6b 70%, #0a1628 100%)',
     },
 ];
@@ -63,13 +60,13 @@ export default function Testimonials() {
         <section className="bg-[var(--color-bg-light)] py-24 max-md:py-16" id="testimonials">
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 <SectionHeader
-                    label="[CLIENT TESTIMONIALS]"
+                    label="[Client Stories]"
                     heading={
                         <>
-                            <span className="text-[var(--color-accent-purple)]">Trusted</span> by Those Who Matter
+                            Partnerships built on <span className="text-[var(--color-accent-purple)]">real results</span>
                         </>
                     }
-                    subtitle="Our clients' trust is earned through consistent results, clear communication, and measurable impact. Their experiences reflect the standards we uphold in every partnership."
+                    subtitle="Trust isn't something we take lightly at Fobex. We earn it by staying vocal, hitting our marks, and showing actual progress every step of the way. These stories reflect the high standards we bring to every single project."
                     className="mb-16"
                 />
 
