@@ -5,7 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from './ui/Icons';
 
 const industries = [
     {
-        name: 'HealthCare',
+        name: 'Healthcare',
         image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop',
         paragraphs: [
             'At Fobex, we build secure, highly accessible patient portals for clinics and medical facilities.',
@@ -87,7 +87,7 @@ export default function Industries() {
                             <span className="text-[var(--color-accent-purple)]">Every Industry</span>
                         </>
                     }
-                    subtitle="Whether you are a fresh startup or a trusted enterprise, we build digital spaces that fit your exact needs. We focus heavily on how your ideal customers actually behave online, pairing smart technology with clean design to bring your business real, measurable growth."
+                    subtitle="We create custom digital solutions for startups and enterprises, blending smart technology and user-focused design to drive measurable business growth."
                     dark
                 />
 

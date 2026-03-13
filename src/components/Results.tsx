@@ -2,18 +2,18 @@ import SectionHeader from './ui/SectionHeader';
 
 const projects = [
     {
-        category: 'Corporate Consulting',
-        title: "We partnered with a Bangalore-based marketing firm to build a powerful lead generation website, helping them attract more qualified clients and grow their revenue.",
+        category: 'Infinios | Corporate Consulting',
+        title: "We helped a Bangalore-based marketing firm grow with a lead generation website, improving search visibility and increasing qualified client leads.",
         image: 'https://images.unsplash.com/photo-1522792011400-988365922c26?q=80&w=800&auto=format&fit=crop',
     },
     {
-        category: 'Food and Beverage',
-        title: 'We transformed this growing Kerala cafe into a highly profitable client by building a custom digital identity and localized web platform. Our strategic local search optimization captured neighbourhood traffic, resulting in fully booked event spaces and a massive surge in daily physical sales.',
+        category: 'Zestano | Food and Beverage',
+        title: 'We built a localized website and digital identity for a Kerala café, improving local search visibility, foot traffic, and daily sales.',
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
     },
     {
-        category: 'Vacations Travel Travel and Tourism',
-        title: 'As the dedicated technology partner for this UAE based travel client, we engineered a globally optimized booking application. By simplifying complex visa selections through intuitive user navigation, our custom software directly accelerated their online conversion rates and generated massive global booking profit.',
+        category: 'Vacations Travel | Travel and Tourism',
+        title: 'We built a global travel booking platform for a UAE client, improving user navigation, visa selection, and online booking conversions.',
         image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
     },
 ];
@@ -23,14 +23,14 @@ export default function Results() {
         <section className="bg-[var(--color-bg-white)] py-24 max-md:py-16" id="results">
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 <SectionHeader
-                    label="[RESULTS DELIVERED]"
+                    label="[Client Success]"
                     heading={
                         <>
                             <span className="text-[var(--color-accent-purple)]">Flawless execution</span> is our standard.<br />
-                            Revenue growth is  <span className="text-[var(--color-accent-purple)]">our commitment.</span>
+                            Revenue growth is <span className="text-[var(--color-accent-purple)]">our commitment.</span>
                         </>
                     }
-                    subtitle="Our team develops high performance digital assets structured to fuel your continuous expansion. Functioning as a premier digital agency, we manage complete web development, digital commerce integration, and custom mobile applications across the entire project lifespan."
+                    subtitle="We build high-performance digital solutions that drive business growth, including web development, eCommerce integration, and custom mobile app development."
                 />
 
                 {/* 3-Column Project Cards */}
