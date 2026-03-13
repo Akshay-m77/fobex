@@ -36,6 +36,18 @@ export default function CTA() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+        const secret = import.meta.env.VITE_FORM_SECRET;
+
+        // Debug logging for production (can be removed after fix)
+        console.log("Form submission started...");
+        if (!scriptUrl) {
+            console.error("Configuration Error: VITE_GOOGLE_SCRIPT_URL is not defined.");
+            alert("Form configuration error. Please ensure environment variables are set up.");
+            return;
+        }
+
         setIsSubmitting(true);
 
         const data = {
@@ -43,11 +55,12 @@ export default function CTA() {
             phone: `'${selectedCountry.dialCode} ${phone}`,
             email: email,
             message: message,
-            secret: import.meta.env.VITE_FORM_SECRET
+            secret: secret
         };
 
         try {
-            await fetch(import.meta.env.VITE_GOOGLE_SCRIPT_URL, {
+            console.log("Fetching to:", scriptUrl);
+            const response = await fetch(scriptUrl, {
                 method: "POST",
                 mode: "no-cors",
                 headers: {
@@ -55,6 +68,10 @@ export default function CTA() {
                 },
                 body: JSON.stringify(data)
             });
+            
+            // Note: with no-cors, we won't get a meaningful response status
+            console.log("Fetch call completed (no-cors mode)");
+            
             alert("Form submitted successfully!");
             setName('');
             setPhone('');
@@ -63,11 +80,12 @@ export default function CTA() {
             setNda(false);
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("An error occurred while submitting the form. Please try again.");
+            alert("An error occurred while submitting the form. Please try again or check your connection.");
         } finally {
             setIsSubmitting(false);
         }
     };
+
 
     return (
         <section className="bg-[var(--color-bg-dark-alt)] py-24 max-md:py-16 border-t-4 border-[var(--color-accent-purple)]" id="contact">
