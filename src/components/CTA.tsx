@@ -21,6 +21,7 @@ export default function CTA() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     // Close dropdown when clicking outside
@@ -41,11 +42,12 @@ export default function CTA() {
         const secret = import.meta.env.VITE_FORM_SECRET;
 
         if (!scriptUrl || scriptUrl === 'undefined') {
-            alert("Configuration Error: The form endpoint is not set up correctly.");
+            setSubmitStatus('error');
             return;
         }
 
         setIsSubmitting(true);
+        setSubmitStatus('idle');
 
         const data = {
             name,
@@ -65,7 +67,7 @@ export default function CTA() {
                 body: JSON.stringify(data)
             });
             
-            alert("Form submitted successfully!");
+            setSubmitStatus('success');
             setName('');
             setPhone('');
             setEmail('');
@@ -73,11 +75,10 @@ export default function CTA() {
             setNda(false);
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("An error occurred while submitting the form. Please try again.");
+            setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
         }
-
     };
 
 
@@ -126,122 +127,150 @@ export default function CTA() {
                         </div>
                     </div>
 
-                    {/* Right — Contact Form */}
-                    <div className="flex-1 min-w-0">
-                        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                            {/* Full Name */}
-                            <FormField label="Full Name" required>
-                                <input
-                                    type="text"
-                                    placeholder="Name..."
-                                    className="form-input"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
-                            </FormField>
-
-                            {/* Primary Contact Number */}
-                            <FormField label="Primary Contact Number" required>
-                                <div className="flex gap-2 relative" ref={dropdownRef}>
-                                    <div 
-                                        className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-colors hover:bg-[rgba(var(--white-rgb),0.08)]`}
-                                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                    >
-                                        <span className="text-base">{selectedCountry.flag}</span>
-                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}>
-                                            <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
+                    {/* Right — Contact Form / Feedback */}
+                    <div className="flex-1 min-w-0 transition-all duration-500">
+                        {submitStatus === 'success' ? (
+                            <div className="bg-[rgba(var(--accent-purple-rgb),0.05)] border border-[var(--color-accent-purple)] rounded-3xl p-12 text-center animate-fade-in">
+                                <div className="w-20 h-20 bg-[var(--color-accent-purple)] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(157,49,255,0.4)]">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-3xl font-medium text-white mb-4 italic">Thank You!</h3>
+                                <p className="text-gray-400 mb-10 leading-relaxed text-sm">
+                                    Your enquiry has been received. Our team will reach out to you within the next 24 hours to discuss your project.
+                                </p>
+                                <button 
+                                    onClick={() => setSubmitStatus('idle')}
+                                    className="text-[var(--color-accent-purple)] text-sm font-medium hover:underline flex items-center gap-2 mx-auto"
+                                >
+                                    Send another message
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                                {submitStatus === 'error' && (
+                                    <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-xs flex items-center gap-3 animate-fade-in mb-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                        Something went wrong. Please check your connection and try again.
                                     </div>
-
-                                    {/* Dropdown Menu */}
-                                    {isDropdownOpen && (
-                                        <div className="absolute top-[calc(100%+8px)] left-0 w-[240px] bg-[#1a1a2e] border border-[rgba(var(--white-rgb),0.1)] rounded-xl shadow-xl z-50 py-2 max-h-[300px] overflow-y-auto">
-                                            {COUNTRIES.map((country) => (
-                                                <div 
-                                                    key={country.code}
-                                                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-[rgba(var(--white-rgb),0.05)] cursor-pointer transition-colors text-sm text-gray-300"
-                                                    onClick={() => {
-                                                        setSelectedCountry(country);
-                                                        setIsDropdownOpen(false);
-                                                    }}
-                                                >
-                                                    <span className="text-xl">{country.flag}</span>
-                                                    <span className="w-12 text-gray-400 font-medium">{country.dialCode}</span>
-                                                    <span className="truncate">{country.name}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-
+                                )}
+                                
+                                {/* Full Name */}
+                                <FormField label="Full Name" required>
                                     <input
-                                        type="tel"
-                                        placeholder={selectedCountry.dialCode}
+                                        type="text"
+                                        placeholder="Name..."
                                         className="form-input"
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                         required
                                     />
-                                </div>
-                            </FormField>
+                                </FormField>
 
-                            {/* Email Address */}
-                            <FormField label="Email Address" required>
-                                <input
-                                    type="email"
-                                    placeholder="Email...."
-                                    className="form-input"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                            </FormField>
+                                {/* Primary Contact Number */}
+                                <FormField label="Primary Contact Number" required>
+                                    <div className="flex gap-2 relative" ref={dropdownRef}>
+                                        <div 
+                                            className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-colors hover:bg-[rgba(var(--white-rgb),0.08)]`}
+                                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                        >
+                                            <span className="text-base">{selectedCountry.flag}</span>
+                                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}>
+                                                <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </div>
 
-                            {/* Schedule call link */}
-                            <p className="text-xs text-gray-500">
-                                We will call you ASAP or you can{' '}
-                                <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)] transition-colors">
-                                    schedule a call.
-                                </a>
-                            </p>
+                                        {/* Dropdown Menu */}
+                                        {isDropdownOpen && (
+                                            <div className="absolute top-[calc(100%+8px)] left-0 w-[240px] bg-[#1a1a2e] border border-[rgba(var(--white-rgb),0.1)] rounded-xl shadow-xl z-50 py-2 max-h-[300px] overflow-y-auto outline-hidden">
+                                                {COUNTRIES.map((country) => (
+                                                    <div 
+                                                        key={country.code}
+                                                        className="flex items-center gap-3 px-4 py-2.5 hover:bg-[rgba(var(--white-rgb),0.05)] cursor-pointer transition-colors text-sm text-gray-300"
+                                                        onClick={() => {
+                                                            setSelectedCountry(country);
+                                                            setIsDropdownOpen(false);
+                                                        }}
+                                                    >
+                                                        <span className="text-xl">{country.flag}</span>
+                                                        <span className="w-12 text-gray-400 font-medium">{country.dialCode}</span>
+                                                        <span className="truncate">{country.name}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
 
-                            {/* Tell us about your project */}
-                            <FormField label="Tell us more about your project">
-                                <textarea
-                                    rows={4}
-                                    className="form-input resize-none"
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                />
-                            </FormField>
+                                        <input
+                                            type="tel"
+                                            placeholder={selectedCountry.dialCode}
+                                            className="form-input"
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
+                                            required
+                                        />
+                                    </div>
+                                </FormField>
 
-                            {/* NDA Checkbox */}
-                            <label className="flex items-center gap-2.5 cursor-pointer">
-                                <input
-                                    type="checkbox"
-                                    checked={nda}
-                                    onChange={() => setNda(!nda)}
-                                    className="w-4 h-4 rounded border-gray-600 accent-[var(--color-accent-purple)]"
-                                />
-                                <span className="text-xs text-gray-400">
-                                    I want to protect my data by signing an NDA.
-                                </span>
-                            </label>
+                                {/* Email Address */}
+                                <FormField label="Email Address" required>
+                                    <input
+                                        type="email"
+                                        placeholder="Email...."
+                                        className="form-input"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                </FormField>
 
-                            {/* Submit Button */}
-                            <ArrowButton type="submit" fullWidth disabled={isSubmitting}>
-                                {isSubmitting ? "Submitting..." : "Submit Enquiry"}
-                            </ArrowButton>
+                                {/* Schedule call link */}
+                                <p className="text-xs text-gray-500">
+                                    We will call you ASAP or you can{' '}
+                                    <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)] transition-colors">
+                                        schedule a call.
+                                    </a>
+                                </p>
 
-                            {/* Privacy disclaimer */}
-                            <p className="text-xs text-gray-500 leading-relaxed">
-                                Please review our{' '}
-                                <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)]">Privacy Policy</a>
-                                {' '}and{' '}
-                                <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)]">Terms of Service</a>
-                                {' '}before providing your details and clicking Submit Enquiry button
-                            </p>
-                        </form>
+                                {/* Tell us about your project */}
+                                <FormField label="Tell us more about your project">
+                                    <textarea
+                                        rows={4}
+                                        className="form-input resize-none"
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
+                                    />
+                                </FormField>
+
+                                {/* NDA Checkbox */}
+                                <label className="flex items-center gap-2.5 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={nda}
+                                        onChange={() => setNda(!nda)}
+                                        className="w-4 h-4 rounded border-gray-600 accent-[var(--color-accent-purple)]"
+                                    />
+                                    <span className="text-xs text-gray-400">
+                                        I want to protect my data by signing an NDA.
+                                    </span>
+                                </label>
+
+                                {/* Submit Button */}
+                                <ArrowButton type="submit" fullWidth disabled={isSubmitting}>
+                                    {isSubmitting ? "Submitting..." : "Submit Enquiry"}
+                                </ArrowButton>
+
+                                {/* Privacy disclaimer */}
+                                <p className="text-xs text-gray-500 leading-relaxed">
+                                    Please review our{' '}
+                                    <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)]">Privacy Policy</a>
+                                    {' '}and{' '}
+                                    <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)]">Terms of Service</a>
+                                    {' '}before providing your details and clicking Submit Enquiry button
+                                </p>
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>
