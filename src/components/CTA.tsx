@@ -22,6 +22,7 @@ export default function CTA() {
     const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [errors, setErrors] = useState<Record<string, string>>({});
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     // Close dropdown when clicking outside
@@ -35,8 +36,31 @@ export default function CTA() {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const validateForm = () => {
+        const newErrors: Record<string, string> = {};
+        
+        if (!name.trim()) newErrors.name = 'Full Name is required';
+        
+        if (!phone.trim()) {
+            newErrors.phone = 'Phone number is required';
+        } else if (phone.length < 7) {
+            newErrors.phone = 'Please enter a valid phone number';
+        }
+        
+        if (!email.trim()) {
+            newErrors.email = 'Email address is required';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            newErrors.email = 'Please enter a valid email address';
+        }
+        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        if (!validateForm()) return;
         
         const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
         const secret = import.meta.env.VITE_FORM_SECRET;
@@ -48,6 +72,7 @@ export default function CTA() {
 
         setIsSubmitting(true);
         setSubmitStatus('idle');
+        setErrors({});
 
         const data = {
             name,
@@ -149,7 +174,7 @@ export default function CTA() {
                                 </button>
                             </div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
                                 {submitStatus === 'error' && (
                                     <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-xs flex items-center gap-3 animate-fade-in mb-2">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -158,22 +183,24 @@ export default function CTA() {
                                 )}
                                 
                                 {/* Full Name */}
-                                <FormField label="Full Name" required>
+                                <FormField label="Full Name" required error={errors.name}>
                                     <input
                                         type="text"
                                         placeholder="Name..."
-                                        className="form-input"
+                                        className={`form-input transition-all ${errors.name ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                         value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        required
+                                        onChange={(e) => {
+                                            setName(e.target.value);
+                                            if (errors.name) setErrors({...errors, name: ''});
+                                        }}
                                     />
                                 </FormField>
 
                                 {/* Primary Contact Number */}
-                                <FormField label="Primary Contact Number" required>
+                                <FormField label="Primary Contact Number" required error={errors.phone}>
                                     <div className="flex gap-2 relative" ref={dropdownRef}>
                                         <div 
-                                            className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-colors hover:bg-[rgba(var(--white-rgb),0.08)]`}
+                                            className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-colors hover:bg-[rgba(var(--white-rgb),0.08)] ${errors.phone ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                         >
                                             <span className="text-base">{selectedCountry.flag}</span>
@@ -205,23 +232,27 @@ export default function CTA() {
                                         <input
                                             type="tel"
                                             placeholder={selectedCountry.dialCode}
-                                            className="form-input"
+                                            className={`form-input ${errors.phone ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                             value={phone}
-                                            onChange={(e) => setPhone(e.target.value)}
-                                            required
+                                            onChange={(e) => {
+                                                setPhone(e.target.value);
+                                                if (errors.phone) setErrors({...errors, phone: ''});
+                                            }}
                                         />
                                     </div>
                                 </FormField>
 
                                 {/* Email Address */}
-                                <FormField label="Email Address" required>
+                                <FormField label="Email Address" required error={errors.email}>
                                     <input
                                         type="email"
                                         placeholder="Email...."
-                                        className="form-input"
+                                        className={`form-input ${errors.email ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                         value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                            if (errors.email) setErrors({...errors, email: ''});
+                                        }}
                                     />
                                 </FormField>
 
@@ -279,14 +310,22 @@ export default function CTA() {
 }
 
 /** Small helper for consistent form field labels */
-function FormField({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+function FormField({ label, required, children, error }: { label: string; required?: boolean; children: React.ReactNode; error?: string }) {
     return (
-        <div>
-            <label className="text-xs text-gray-400 mb-1.5 block">
-                {label}
-                {required && <span className="text-[var(--color-accent-purple)]"> *</span>}
+        <div className="relative">
+            <label className="text-xs text-gray-400 mb-1.5 block flex justify-between items-center pr-1 transition-all">
+                <span>
+                    {label}
+                    {required && <span className="text-[var(--color-accent-purple)]"> *</span>}
+                </span>
             </label>
             {children}
+            {error && (
+                <div className="text-[10px] text-red-500 mt-1.5 pl-1 flex items-center gap-1.5 animate-fade-in absolute -bottom-4.5 left-0">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {error}
+                </div>
+            )}
         </div>
     );
 }
