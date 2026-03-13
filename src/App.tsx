@@ -6,7 +6,7 @@ import Process from './components/Process'
 import Results from './components/Results'
 import Industries from './components/Industries'
 import Testimonials from './components/Testimonials'
-import Insights from './components/Insights'
+// import Insights from './components/Insights'
 import CTA from './components/CTA'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
@@ -24,7 +24,7 @@ function App() {
         <Results />
         <Industries />
         <Testimonials />
-        <Insights />
+        {/* <Insights /> */}
         <CTA />
         <FAQ />
       </main>

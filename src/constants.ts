@@ -4,7 +4,7 @@ export const NAV_LINKS = [
     { label: 'Process', href: '#process' },
     { label: 'Our Results', href: '#results' },
     { label: 'Industries', href: '#industries' },
-    { label: 'Insights', href: '#insights' },
+    // { label: 'Insights', href: '#insights' },
 ] as const;
 
 // Social media links used in Footer
