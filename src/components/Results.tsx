@@ -1,4 +1,5 @@
 import SectionHeader from './ui/SectionHeader';
+import FadeIn from './ui/FadeIn';
 
 const projects = [
     {
@@ -22,39 +23,43 @@ export default function Results() {
     return (
         <section className="bg-[var(--color-bg-white)] py-24 max-md:py-16" id="results">
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
-                <SectionHeader
-                    label="[Client Success]"
-                    heading={
-                        <>
-                            <span className="text-[var(--color-accent-purple)]">Flawless execution</span> is our standard.<br />
-                            Revenue growth is <span className="text-[var(--color-accent-purple)]">our commitment.</span>
-                        </>
-                    }
-                    subtitle="We build high-performance digital solutions that drive business growth, including web development, eCommerce integration, and custom mobile app development."
-                />
+                <FadeIn>
+                    <SectionHeader
+                        label="[Client Success]"
+                        heading={
+                            <>
+                                <span className="text-[var(--color-accent-purple)]">Flawless execution</span> is our standard.<br />
+                                Revenue growth is <span className="text-[var(--color-accent-purple)]">our commitment.</span>
+                            </>
+                        }
+                        subtitle="We build high-performance digital solutions that drive business growth, including web development, eCommerce integration, and custom mobile app development."
+                    />
+                </FadeIn>
 
                 {/* 3-Column Project Cards */}
                 <div className="grid grid-cols-3 max-md:grid-cols-1 gap-8">
                     {projects.map((p, i) => (
-                        <div key={i} className="group cursor-pointer">
-                            {/* Thumbnail */}
-                            <div
-                                className="relative h-56 rounded-2xl overflow-hidden mb-5 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)] group-hover:scale-[1.01]"
-                            >
-                                <img
-                                    src={p.image}
-                                    alt={p.category}
-                                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                                />
-                            </div>
+                        <FadeIn key={i} delay={i * 0.1}>
+                            <div className="group cursor-pointer">
+                                {/* Thumbnail */}
+                                <div
+                                    className="relative h-56 rounded-2xl overflow-hidden mb-5 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)] group-hover:scale-[1.01]"
+                                >
+                                    <img
+                                        src={p.image}
+                                        alt={p.category}
+                                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                    />
+                                </div>
 
-                            <p className="text-sm font-semibold text-[var(--color-accent-purple)] mb-1.5 transition-transform duration-300 group-hover:translate-x-1">
-                                {p.category}
-                            </p>
-                            <p className="text-sm text-gray-600 leading-relaxed transition-colors duration-300 group-hover:text-gray-900">
-                                {p.title}
-                            </p>
-                        </div>
+                                <p className="text-sm font-semibold text-[var(--color-accent-purple)] mb-1.5 transition-transform duration-300 group-hover:translate-x-1">
+                                    {p.category}
+                                </p>
+                                <p className="text-sm text-gray-600 leading-relaxed transition-colors duration-300 group-hover:text-gray-900">
+                                    {p.title}
+                                </p>
+                            </div>
+                        </FadeIn>
                     ))}
                 </div>
             </div>

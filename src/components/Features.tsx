@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FadeIn from './ui/FadeIn';
 
 import img1 from '../assets/features/Group 1.png';
 import img2 from '../assets/features/Group 2.png';
@@ -47,42 +48,45 @@ export default function Features() {
         <section className="bg-[var(--color-bg-white)] py-24 max-md:py-16" id="features">
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 {/* Header */}
-                <div className="text-center mb-14">
-                    <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.2] tracking-[-0.02em] text-gray-900 mb-5">
-                        We work with forward-thinking brands <br /> to create high-quality digital spaces.
-                    </h2>
-                    <p className="text-sm text-gray-500 mx-auto leading-relaxed">
-                        We focus on user clarity and system speed from day one so your digital presence grows smoothly.<br className="hidden md:block" />
-                        Our strategy across all services is built to make a big market impact over time.
-                    </p>
-                </div>
+                <FadeIn>
+                    <div className="text-center mb-14">
+                        <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.2] tracking-[-0.02em] text-gray-900 mb-5">
+                            We work with forward-thinking brands <br /> to create high-quality digital spaces.
+                        </h2>
+                        <p className="text-sm text-gray-500 mx-auto leading-relaxed">
+                            We focus on user clarity and system speed from day one so your digital presence grows smoothly.<br className="hidden md:block" />
+                            Our strategy across all services is built to make a big market impact over time.
+                        </p>
+                    </div>
+                </FadeIn>
 
                 {/* Desktop Grid */}
                 <div className="grid grid-cols-3 gap-5 max-md:hidden">
                     {services.map((s, i) => (
-                        <div
-                            key={i}
-                            className="group bg-[#F4F8FF] overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)]"
-                        >
-                            {/* Image thumbnail */}
-                            <div className="overflow-hidden bg-black">
-                                <div className="h-32 w-full relative transition-transform duration-700 ease-out group-hover:scale-110">
-                                    <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                        <FadeIn key={i} delay={i * 0.1}>
+                            <div
+                                className="group bg-[#F4F8FF] overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)]"
+                            >
+                                {/* Image thumbnail */}
+                                <div className="overflow-hidden bg-black">
+                                    <div className="h-32 w-full relative transition-transform duration-700 ease-out group-hover:scale-110">
+                                        <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                                    </div>
+                                </div>
+
+                                {/* Text content */}
+                                <div className="p-8 pt-6">
+                                    <h3 className="text-lg font-semibold text-gray-900 mb-1 inline-block relative pb-1
+after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[95%] after:bg-[#8B5CF6]">
+                                        {s.title}
+                                    </h3>
+                                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                                        {s.description}
+                                    </p>
                                 </div>
                             </div>
-
-                            {/* Text content */}
-                            <div className="p-8 pt-6">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-1 inline-block relative pb-1
-after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[95%] after:bg-[#8B5CF6]">
-                                    {s.title}
-                                </h3>
-                                <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                                    {s.description}
-                                </p>
-                            </div>
-                        </div>
+                        </FadeIn>
                     ))}
                 </div>
 

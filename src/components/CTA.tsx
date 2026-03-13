@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import ArrowButton from './ui/ArrowButton';
+import FadeIn from './ui/FadeIn';
 
 const COUNTRIES = [
     { code: 'IN', dialCode: '+91', flag: '🇮🇳', name: 'India' },
@@ -121,7 +122,7 @@ export default function CTA() {
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
                 <div className="flex gap-16 items-start max-md:flex-col">
                     {/* Left — Heading + Quote + World Map */}
-                    <div className="flex-1 min-w-0">
+                    <FadeIn direction="right" className="flex-1 min-w-0" delay={0.2} fullWidth>
                         <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.15] mb-10">
                             <span className="text-white">Let's Talk</span>
                             <br />
@@ -159,10 +160,10 @@ export default function CTA() {
                                 <line x1="340" y1="58" x2="380" y2="110" stroke="var(--color-accent-purple)" strokeWidth="0.3" opacity="0.3" />
                             </svg>
                         </div>
-                    </div>
+                    </FadeIn>
 
                     {/* Right — Contact Form / Feedback */}
-                    <div className="flex-1 min-w-0 transition-all duration-500">
+                    <FadeIn direction="left" className="flex-1 min-w-0 transition-all duration-500" delay={0.4} fullWidth>
                         {submitStatus === 'success' ? (
                             <div className="bg-[rgba(var(--accent-purple-rgb),0.05)] border border-[var(--color-accent-purple)] rounded-3xl p-12 text-center animate-fade-in">
                                 <div className="w-20 h-20 bg-[var(--color-accent-purple)] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(157,49,255,0.4)]">
@@ -331,7 +332,7 @@ export default function CTA() {
                                 </p>
                             </form>
                         )}
-                    </div>
+                    </FadeIn>
                 </div>
             </div>
         </section>

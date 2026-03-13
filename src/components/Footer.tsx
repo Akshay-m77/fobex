@@ -1,6 +1,7 @@
 import { NAV_LINKS, SOCIAL_LINKS } from '../constants';
 import ArrowButton from './ui/ArrowButton';
 import fobexLogo from '../assets/Fobex.svg';
+import FadeIn from './ui/FadeIn';
 
 export default function Footer() {
     return (
@@ -35,7 +36,7 @@ export default function Footer() {
 
             <div className="max-w-[var(--container-lg)] mx-auto px-6 relative z-10">
                 {/* Top row: Heading + Logo */}
-                <div className="flex items-start justify-between mb-12 max-md:flex-col max-md:gap-8">
+                <FadeIn className="flex items-start justify-between mb-12 max-md:flex-col max-md:gap-8" fullWidth>
                     <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium italic leading-[1.2] text-white">
                         Set bold goals.
                         <br />
@@ -43,10 +44,10 @@ export default function Footer() {
                     </h2>
 
                     <img src={fobexLogo} alt="Fobex Logo" className="h-10 w-auto filter invert brightness-0" />
-                </div>
+                </FadeIn>
 
                 {/* Nav links */}
-                <div className="flex items-center gap-8 mb-10 flex-wrap">
+                <FadeIn className="flex items-center gap-8 mb-10 flex-wrap" delay={0.2} fullWidth>
                     {NAV_LINKS.map((link, i) => (
                         <a
                             key={i}
@@ -56,10 +57,10 @@ export default function Footer() {
                             {link.label}
                         </a>
                     ))}
-                </div>
+                </FadeIn>
 
                 {/* Bottom row: Newsletter + Social/Address */}
-                <div className="flex items-end justify-between gap-12 max-md:flex-col max-md:items-start max-md:gap-10">
+                <FadeIn className="flex items-end justify-between gap-12 max-md:flex-col max-md:items-start max-md:gap-10" delay={0.4} fullWidth>
                     {/* Left — Newsletter */}
                     <div className="max-w-[320px]">
                         <label className="text-xs text-gray-400 mb-1.5 block">
@@ -100,7 +101,7 @@ export default function Footer() {
                             <p>+91 9539217426</p>
                         </div>
                     </div>
-                </div>
+                </FadeIn>
             </div>
         </footer>
     );

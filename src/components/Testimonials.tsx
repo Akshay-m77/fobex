@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import FadeIn from './ui/FadeIn';
 import SectionHeader from './ui/SectionHeader';
 import ArrowButton from './ui/ArrowButton';
 import { ChevronLeftIcon, ChevronRightIcon } from './ui/Icons';
@@ -59,21 +60,23 @@ export default function Testimonials() {
     return (
         <section className="bg-[var(--color-bg-light)] py-24 max-md:py-16" id="testimonials">
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
-                <SectionHeader
-                    label="[Client Stories]"
-                    heading={
-                        <>
-                            Partnerships built on <span className="text-[var(--color-accent-purple)]">real results</span>
-                        </>
-                    }
-                    subtitle="Trust isn't something we take lightly at Fobex. We earn it by staying vocal, hitting our marks, and showing actual progress every step of the way. These stories reflect the high standards we bring to every single project."
-                    className="mb-16"
-                />
+                <FadeIn>
+                    <SectionHeader
+                        label="[Client Stories]"
+                        heading={
+                            <>
+                                Partnerships built on <span className="text-[var(--color-accent-purple)]">real results</span>
+                            </>
+                        }
+                        subtitle="Trust isn't something we take lightly at Fobex. We earn it by staying vocal, hitting our marks, and showing actual progress every step of the way. These stories reflect the high standards we bring to every single project."
+                        className="mb-16"
+                    />
+                </FadeIn>
 
                 {/* Two-column content */}
                 <div className="flex gap-12 items-start max-md:flex-col">
                     {/* Left — Case study */}
-                    <div className="flex-1 min-w-0">
+                    <FadeIn direction="right" className="flex-1 min-w-0" delay={0.2} fullWidth>
                         <h3 className="text-2xl font-medium text-gray-900 mb-3">
                             {t.caseTitle}
                         </h3>
@@ -103,10 +106,10 @@ export default function Testimonials() {
                         <ArrowButton href="#" variant="dark">
                             Learn more about Our works
                         </ArrowButton>
-                    </div>
+                    </FadeIn>
 
                     {/* Right — Testimonial quote */}
-                    <div className="flex-1 min-w-0 pt-2">
+                    <FadeIn direction="left" className="flex-1 min-w-0 pt-2" delay={0.4} fullWidth>
                         <h3 className="text-[1.75rem] max-md:text-xl font-medium text-gray-900 leading-[1.3] mb-6 transition-colors duration-300 hover:text-[var(--color-accent-purple)]">
                             {t.quoteTitle}
                         </h3>
@@ -147,7 +150,7 @@ export default function Testimonials() {
                                 <ChevronRightIcon />
                             </button>
                         </div>
-                    </div>
+                    </FadeIn>
                 </div>
             </div>
         </section>

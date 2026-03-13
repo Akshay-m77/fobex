@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
+import FadeIn from './ui/FadeIn';
 
 const sections = [
     {
@@ -93,12 +94,14 @@ function ScrollRevealSection({
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden w-full">
                 <div className="max-w-[var(--container-md)] mx-auto px-6 text-center">
                     {/* Label */}
-                    <p
-                        className={`text-lg max-md:text-base tracking-wide mb-10 font-normal ${dark ? 'text-white/80' : 'text-gray-900'
-                            }`}
-                    >
-                        {label}
-                    </p>
+                    <FadeIn delay={0.1}>
+                        <p
+                            className={`text-lg max-md:text-base tracking-wide mb-10 font-normal ${dark ? 'text-white/80' : 'text-gray-900'
+                                }`}
+                        >
+                            {label}
+                        </p>
+                    </FadeIn>
 
                     {/* Main statement with word-by-word scroll reveal */}
                     <h2 className="text-[3.5rem] max-md:text-[2.2rem] leading-[1.3] cursor-default transition-all">

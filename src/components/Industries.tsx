@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import SectionHeader from './ui/SectionHeader';
 import ArrowButton from './ui/ArrowButton';
 import { ChevronLeftIcon, ChevronRightIcon } from './ui/Icons';
+import FadeIn from './ui/FadeIn';
 
 const industries = [
     {
@@ -78,23 +79,25 @@ export default function Industries() {
             `}</style>
 
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
-                <SectionHeader
-                    label="[Solutions Built for Your Industry]"
-                    heading={
-                        <>
-                            Driving Measurable Digital Growth <br className="hidden lg:block" />
-                            <span>Across </span>
-                            <span className="text-[var(--color-accent-purple)]">Every Industry</span>
-                        </>
-                    }
-                    subtitle="We create custom digital solutions for startups and enterprises, blending smart technology and user-focused design to drive measurable business growth."
-                    dark
-                />
+                <FadeIn>
+                    <SectionHeader
+                        label="[Solutions Built for Your Industry]"
+                        heading={
+                            <>
+                                Driving Measurable Digital Growth <br className="hidden lg:block" />
+                                <span>Across </span>
+                                <span className="text-[var(--color-accent-purple)]">Every Industry</span>
+                            </>
+                        }
+                        subtitle="We create custom digital solutions for startups and enterprises, blending smart technology and user-focused design to drive measurable business growth."
+                        dark
+                    />
+                </FadeIn>
 
                 {/* Content: Image + Details */}
                 <div className="flex gap-10 items-start max-md:flex-col">
                     {/* Left — Image card */}
-                    <div className="flex-1 min-w-0">
+                    <FadeIn direction="right" className="flex-1 min-w-0" delay={0.2} fullWidth>
                         <div
                             className="relative h-72 max-md:h-56 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl group"
                         >
@@ -140,10 +143,10 @@ export default function Industries() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </FadeIn>
 
                     {/* Right — Details */}
-                    <div className="flex-1 min-w-0 pt-2">
+                    <FadeIn direction="left" className="flex-1 min-w-0 pt-2" delay={0.4}>
                         <h3 className="text-2xl font-medium text-[var(--color-accent-purple)] mb-5">
                             {current.name}
                         </h3>
@@ -158,7 +161,7 @@ export default function Industries() {
                                 {current.cta}
                             </ArrowButton>
                         </div>
-                    </div>
+                    </FadeIn>
                 </div>
 
                 {/* Dot pagination */}

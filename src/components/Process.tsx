@@ -1,4 +1,5 @@
 import SectionHeader from './ui/SectionHeader';
+import FadeIn from './ui/FadeIn';
 
 const steps = [
     {
@@ -71,35 +72,39 @@ export default function Process() {
     return (
         <section id="process" className="bg-[var(--color-bg-light-alt)] py-20 max-md:py-14">
             <div className="max-w-[var(--container-lg)] mx-auto px-6">
-                <SectionHeader
-                    label="[The Execution Strategy]"
-                    heading={
-                        <>
-                            Turning Ambitious Ideas into <br />
-                            <span className="text-[var(--color-accent-purple)]">High Growth Realities</span>
-                        </>
-                    }
-                    subtitle="We make ideas happen in the digital world with goals, smart execution, and results that matter. Each step is designed to help you grow and succeed with real-time results for you."
-                />
+                <FadeIn>
+                    <SectionHeader
+                        label="[The Execution Strategy]"
+                        heading={
+                            <>
+                                Turning Ambitious Ideas into <br />
+                                <span className="text-[var(--color-accent-purple)]">High Growth Realities</span>
+                            </>
+                        }
+                        subtitle="We make ideas happen in the digital world with goals, smart execution, and results that matter. Each step is designed to help you grow and succeed with real-time results for you."
+                    />
+                </FadeIn>
 
                 {/* 4-Column Process Grid */}
                 <div className="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-8 max-md:gap-10">
                     {steps.map((step, i) => (
-                        <div key={i} className="group transition-transform duration-300 hover:-translate-y-2">
-                            <div className="mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:text-[var(--color-accent-purple)]">{step.icon}</div>
-                            <h3 className="text-base font-medium text-gray-900 mb-2">{step.title}</h3>
-                            <p className="text-xs text-gray-500 leading-relaxed mb-6 transition-colors duration-300 group-hover:text-gray-700">{step.description}</p>
-                            <div className="flex flex-col gap-3">
-                                {step.items.map((item, j) => (
-                                    <div
-                                        key={j}
-                                        className="text-sm font-medium text-gray-800 pb-2 border-b border-gray-200"
-                                    >
-                                        {item}
-                                    </div>
-                                ))}
+                        <FadeIn key={i} delay={i * 0.1}>
+                            <div className="group transition-transform duration-300 hover:-translate-y-2">
+                                <div className="mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:text-[var(--color-accent-purple)]">{step.icon}</div>
+                                <h3 className="text-base font-medium text-gray-900 mb-2">{step.title}</h3>
+                                <p className="text-xs text-gray-500 leading-relaxed mb-6 transition-colors duration-300 group-hover:text-gray-700">{step.description}</p>
+                                <div className="flex flex-col gap-3">
+                                    {step.items.map((item, j) => (
+                                        <div
+                                            key={j}
+                                            className="text-sm font-medium text-gray-800 pb-2 border-b border-gray-200"
+                                        >
+                                            {item}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                        </FadeIn>
                     ))}
                 </div>
             </div>

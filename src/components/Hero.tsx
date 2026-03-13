@@ -3,6 +3,7 @@ import heroImg from '../assets/hero-img.png';
 import heroMobileBg from '../assets/hero bg.png';
 import ArrowButton from './ui/ArrowButton';
 import { ChevronDownIcon } from './ui/Icons';
+import FadeIn from './ui/FadeIn';
 
 export default function Hero() {
     const heroRef = useRef<HTMLElement>(null);
@@ -54,28 +55,34 @@ export default function Hero() {
             {/* Content */}
             <div className="max-w-[var(--container-lg)] mx-auto px-6 max-md:px-5 relative z-10 w-full">
                 {/* Title — left aligned */}
-                <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-medium max-md:not-italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">
-                    <span className="block">
-                        <span className="text-white">One Partner - </span>
-                        <span className="gradient-text">Every Digital Edge</span>
-                    </span>
-                    <span className="text-white block">Your Brand Needs</span>
-                </h1>
+                <FadeIn delay={0.2}>
+                    <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-medium max-md:not-italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">
+                        <span className="block">
+                            <span className="text-white">One Partner - </span>
+                            <span className="gradient-text">Every Digital Edge</span>
+                        </span>
+                        <span className="text-white block">Your Brand Needs</span>
+                    </h1>
+                </FadeIn>
 
                 {/* Description */}
-                <p className="text-sm max-md:text-[13px] text-gray-400 max-w-[680px] leading-relaxed max-md:leading-[1.6] mb-8 max-md:mb-10 max-md:pr-4">
-                    Our story isn't just about code or design; we look at your complete business landscape. Our foundation is built on superior React apps and high-end mobile development. We integrate expert product leadership and video to build the next chapter of your brand.
-                </p>
+                <FadeIn delay={0.4}>
+                    <p className="text-sm max-md:text-[13px] text-gray-400 max-w-[680px] leading-relaxed max-md:leading-[1.6] mb-8 max-md:mb-10 max-md:pr-4">
+                        Our story isn't just about code or design; we look at your complete business landscape. Our foundation is built on superior React apps and high-end mobile development. We integrate expert product leadership and video to build the next chapter of your brand.
+                    </p>
+                </FadeIn>
 
                 {/* CTA Button */}
-                <div className="flex items-center gap-4 w-full">
-                    <ArrowButton
-                        href="#contact"
-                        className="max-md:w-full max-md:justify-between max-md:bg-[rgba(124,58,237,0.08)] max-md:border-[#a855f7]/50"
-                    >
-                        <span className="max-md:italic max-md:font-medium text-[15px]">Let's Talk business</span>
-                    </ArrowButton>
-                </div>
+                <FadeIn delay={0.6}>
+                    <div className="flex items-center gap-4 w-full">
+                        <ArrowButton
+                            href="#contact"
+                            className="max-md:w-full max-md:justify-between max-md:bg-[rgba(124,58,237,0.08)] max-md:border-[#a855f7]/50"
+                        >
+                            <span className="max-md:italic max-md:font-medium text-[15px]">Let's Talk business</span>
+                        </ArrowButton>
+                    </div>
+                </FadeIn>
 
                 {/* Bouncing arrow (mobile) */}
                 <div className="flex justify-center md:hidden pt-12 pb-6 w-full text-white animate-bounce">
