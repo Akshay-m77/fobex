@@ -59,6 +59,14 @@
   --container-sm: 95%;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --container-lg: 95%;
+    --container-md: 96%;
+    --container-sm: 98%;
+  }
+}
+
 /* Base styles */
 html {
   scroll-behavior: smooth;

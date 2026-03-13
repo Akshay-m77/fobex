@@ -46,7 +46,7 @@ export default function Features() {
 
     return (
         <section className="bg-[var(--color-bg-white)] py-24 max-md:py-16" id="features">
-            <div className="max-w-[var(--container-lg)] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-4 md:px-6">
                 {/* Header */}
                 <FadeIn>
                     <div className="text-center mb-14">

@@ -59,7 +59,7 @@ export default function Testimonials() {
 
     return (
         <section className="bg-[var(--color-bg-light)] py-24 max-md:py-16" id="testimonials">
-            <div className="max-w-[var(--container-lg)] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-4 md:px-6">
                 <FadeIn>
                     <SectionHeader
                         label="[Client Stories]"

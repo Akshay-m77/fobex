@@ -78,7 +78,7 @@ export default function Industries() {
                 }
             `}</style>
 
-            <div className="max-w-[var(--container-lg)] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-4 md:px-6">
                 <FadeIn>
                     <SectionHeader
                         label="[Solutions Built for Your Industry]"

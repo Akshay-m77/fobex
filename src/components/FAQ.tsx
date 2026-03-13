@@ -37,7 +37,7 @@ export default function FAQ() {
 
     return (
         <section className="bg-[var(--color-bg-light)] py-24 max-md:py-16" id="faq">
-            <div className="max-w-[var(--container-lg)] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-4 md:px-6">
                 <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
                     {/* Left Column: Heading */}
                     <div className="lg:col-span-5">

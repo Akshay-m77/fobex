@@ -22,7 +22,7 @@ const projects = [
 export default function Results() {
     return (
         <section className="bg-[var(--color-bg-white)] py-24 max-md:py-16" id="results">
-            <div className="max-w-[var(--container-lg)] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-4 md:px-6">
                 <FadeIn>
                     <SectionHeader
                         label="[Client Success]"

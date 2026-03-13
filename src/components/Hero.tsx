@@ -53,7 +53,7 @@ export default function Hero() {
             </div>
 
             {/* Content */}
-            <div className="max-w-[var(--container-lg)] mx-auto px-6 max-md:px-5 relative z-10 w-full">
+            <div className="max-w-[var(--container-lg)] mx-auto px-4 md:px-6 relative z-10 w-full">
                 {/* Title — left aligned */}
                 <FadeIn delay={0.2}>
                     <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-medium max-md:not-italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">

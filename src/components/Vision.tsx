@@ -92,7 +92,7 @@ function ScrollRevealSection({
             className={`relative h-[150vh] ${dark ? 'bg-[var(--color-bg-primary)]' : 'bg-white'}`}
         >
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden w-full">
-                <div className="max-w-[var(--container-md)] mx-auto px-6 text-center">
+                <div className="max-w-[var(--container-md)] mx-auto px-4 md:px-6 text-center">
                     {/* Label */}
                     <FadeIn delay={0.1}>
                         <p

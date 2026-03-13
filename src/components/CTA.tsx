@@ -119,7 +119,7 @@ export default function CTA() {
 
     return (
         <section className="bg-[var(--color-bg-dark-alt)] py-24 max-md:py-16 border-t-4 border-[var(--color-accent-purple)]" id="contact">
-            <div className="max-w-[var(--container-lg)] mx-auto px-6">
+            <div className="max-w-[var(--container-lg)] mx-auto px-4 md:px-6">
                 <div className="flex gap-16 items-start max-md:flex-col">
                     {/* Left — Heading + Quote + World Map */}
                     <FadeIn direction="right" className="flex-1 min-w-0" delay={0.2} fullWidth>
