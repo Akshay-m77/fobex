@@ -10,6 +10,7 @@ const COUNTRIES = [
     { code: 'AE', dialCode: '+971', flag: '🇦🇪', name: 'United Arab Emirates' },
     { code: 'SG', dialCode: '+65', flag: '🇸🇬', name: 'Singapore' },
     { code: 'DE', dialCode: '+49', flag: '🇩🇪', name: 'Germany' },
+    { code: 'OTHER', dialCode: '', flag: '🌐', name: 'Other' },
 ];
 
 export default function CTA() {
@@ -23,6 +24,7 @@ export default function CTA() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const [manualDialCode, setManualDialCode] = useState('');
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     // Close dropdown when clicking outside
@@ -45,6 +47,10 @@ export default function CTA() {
             newErrors.phone = 'Phone number is required';
         } else if (phone.length < 7) {
             newErrors.phone = 'Please enter a valid phone number';
+        }
+
+        if (selectedCountry.code === 'OTHER' && !manualDialCode.trim()) {
+            newErrors.phone = 'Please enter a dial code';
         }
         
         if (!email.trim()) {
@@ -74,9 +80,11 @@ export default function CTA() {
         setSubmitStatus('idle');
         setErrors({});
 
+        const dialCode = selectedCountry.code === 'OTHER' ? manualDialCode : selectedCountry.dialCode;
+        
         const data = {
             name,
-            phone: `'${selectedCountry.dialCode} ${phone}`,
+            phone: `'${dialCode} ${phone}`,
             email,
             message,
             secret
@@ -95,6 +103,7 @@ export default function CTA() {
             setSubmitStatus('success');
             setName('');
             setPhone('');
+            setManualDialCode('');
             setEmail('');
             setMessage('');
             setNda(false);
@@ -200,10 +209,30 @@ export default function CTA() {
                                 <FormField label="Primary Contact Number" required error={errors.phone}>
                                     <div className="flex gap-2 relative" ref={dropdownRef}>
                                         <div 
-                                            className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-colors hover:bg-[rgba(var(--white-rgb),0.08)] ${errors.phone ? 'border-red-500/50 bg-red-500/5' : ''}`}
-                                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                            className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-all hover:bg-[rgba(var(--white-rgb),0.08)] ${errors.phone && selectedCountry.code === 'OTHER' && !manualDialCode ? 'border-red-500/50 bg-red-500/5' : ''}`}
+                                            onClick={(e) => {
+                                                if (selectedCountry.code !== 'OTHER' || (e.target as HTMLElement).tagName !== 'INPUT') {
+                                                    setIsDropdownOpen(!isDropdownOpen);
+                                                }
+                                            }}
                                         >
                                             <span className="text-base">{selectedCountry.flag}</span>
+                                            {selectedCountry.code === 'OTHER' ? (
+                                                <input 
+                                                    type="text"
+                                                    placeholder="+..."
+                                                    className="w-12 bg-transparent border-none outline-hidden text-xs font-medium text-white placeholder-gray-600 p-0"
+                                                    value={manualDialCode}
+                                                    onChange={(e) => {
+                                                        setManualDialCode(e.target.value);
+                                                        if (errors.phone) setErrors({...errors, phone: ''});
+                                                    }}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    autoFocus
+                                                />
+                                            ) : (
+                                                <span className="text-xs font-medium text-gray-400">{selectedCountry.dialCode}</span>
+                                            )}
                                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}>
                                                 <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
@@ -231,8 +260,8 @@ export default function CTA() {
 
                                         <input
                                             type="tel"
-                                            placeholder={selectedCountry.dialCode}
-                                            className={`form-input ${errors.phone ? 'border-red-500/50 bg-red-500/5' : ''}`}
+                                            placeholder="Phone Number"
+                                            className={`form-input flex-1 !w-auto ${errors.phone ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                             value={phone}
                                             onChange={(e) => {
                                                 setPhone(e.target.value);
