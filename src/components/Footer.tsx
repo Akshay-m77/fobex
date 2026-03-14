@@ -18,7 +18,7 @@ export default function Footer() {
                         <div>
                             <img src={fobexLogo} alt="Fobex" className="h-9 filter invert brightness-0 mb-8" />
                             <p className="text-[#e5e7eb] text-[15px] leading-relaxed font-normal">
-                                A future-focused brand group building technology-driven ventures. Structured for the long term.
+                                A forward-thinking brand  creating technology-driven ventures built for long-term success.
                             </p>
                         </div>
 
@@ -78,7 +78,7 @@ export default function Footer() {
                 </div>
 
                 {/* Navigation Links Area */}
-                <div className="border-t border-[#1a1a1a] py-14">
+                <div className="border-t border-white/10 py-14">
                     <FadeIn className="flex justify-center flex-wrap gap-x-14 gap-y-6">
                         {NAV_LINKS.map((link, i) => (
                             <a
@@ -93,7 +93,7 @@ export default function Footer() {
                 </div>
 
                 {/* Footer Bottom Bar */}
-                <div className="border-t border-[#1a1a1a] pt-10 flex items-center justify-between max-md:flex-col max-md:gap-6">
+                <div className="border-t border-white/10 pt-10 flex items-center justify-between max-md:flex-col max-md:gap-6">
                     <p className="text-[11px] text-[#4b5563] font-medium tracking-tight">
                         © 2026 Fobexglobal all rights reserved
                     </p>
