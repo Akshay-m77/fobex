@@ -3,15 +3,15 @@ import ArrowButton from './ui/ArrowButton';
 import FadeIn from './ui/FadeIn';
 
 const COUNTRIES = [
-    { code: 'IN', dialCode: '+91', flag: '🇮🇳', name: 'India' },
-    { code: 'US', dialCode: '+1', flag: '🇺🇸', name: 'United States' },
-    { code: 'GB', dialCode: '+44', flag: '🇬🇧', name: 'United Kingdom' },
-    { code: 'AU', dialCode: '+61', flag: '🇦🇺', name: 'Australia' },
-    { code: 'CA', dialCode: '+1', flag: '🇨🇦', name: 'Canada' },
-    { code: 'AE', dialCode: '+971', flag: '🇦🇪', name: 'United Arab Emirates' },
-    { code: 'SG', dialCode: '+65', flag: '🇸🇬', name: 'Singapore' },
-    { code: 'DE', dialCode: '+49', flag: '🇩🇪', name: 'Germany' },
-    { code: 'OTHER', dialCode: '', flag: '🌐', name: 'Other' },
+    { code: 'IN', flagCode: 'in', dialCode: '+91', flag: '🇮🇳', name: 'India' },
+    { code: 'US', flagCode: 'us', dialCode: '+1', flag: '🇺🇸', name: 'United States' },
+    { code: 'GB', flagCode: 'gb', dialCode: '+44', flag: '🇬🇧', name: 'United Kingdom' },
+    { code: 'AU', flagCode: 'au', dialCode: '+61', flag: '🇦🇺', name: 'Australia' },
+    { code: 'CA', flagCode: 'ca', dialCode: '+1', flag: '🇨🇦', name: 'Canada' },
+    { code: 'AE', flagCode: 'ae', dialCode: '+971', flag: '🇦🇪', name: 'United Arab Emirates' },
+    { code: 'SG', flagCode: 'sg', dialCode: '+65', flag: '🇸🇬', name: 'Singapore' },
+    { code: 'DE', flagCode: 'de', dialCode: '+49', flag: '🇩🇪', name: 'Germany' },
+    { code: 'OTHER', flagCode: '', dialCode: '', flag: '🌐', name: 'Other' },
 ];
 
 export default function CTA() {
@@ -123,10 +123,9 @@ export default function CTA() {
                 <div className="flex gap-16 items-start max-md:flex-col">
                     {/* Left — Heading + Quote + World Map */}
                     <FadeIn direction="right" className="flex-1 min-w-0" delay={0.2} fullWidth>
-                        <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.15] mb-10">
-                            <span className="text-white">Let's Talk</span>
-                            <br />
-                            <span className="gradient-text">Business</span>
+                        <h2 className="font-medium leading-none mb-10">
+                            <span className="text-white text-[2.5rem] max-md:text-[1.8rem] block mb-2 opacity-90 italic">Let's Talk</span>
+                            <span className="gradient-text text-[5rem] max-md:text-[3.5rem] block -ml-1">Business</span>
                         </h2>
 
                         <blockquote className="text-sm italic text-gray-400 leading-relaxed mb-3 max-w-[300px]">
@@ -135,7 +134,7 @@ export default function CTA() {
                             make an impact."
                         </blockquote>
                         <p className="text-sm text-gray-300 font-medium mb-12">
-                            CEO - Company name
+                            CEO - Fobex
                         </p>
 
                         {/* World map dots */}
@@ -165,7 +164,7 @@ export default function CTA() {
                     {/* Right — Contact Form / Feedback */}
                     <FadeIn direction="left" className="flex-1 min-w-0 transition-all duration-500" delay={0.4} fullWidth>
                         {submitStatus === 'success' ? (
-                            <div className="bg-[rgba(var(--accent-purple-rgb),0.05)] border border-[var(--color-accent-purple)] rounded-3xl p-12 text-center animate-fade-in">
+                            <div className="bg-[rgba(var(--accent-purple-rgb),0.05)] border border-[var(--color-accent-purple)] rounded-none p-12 text-center animate-fade-in">
                                 <div className="w-20 h-20 bg-[var(--color-accent-vibrant)] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(157,49,255,0.4)]">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                         <polyline points="20 6 9 17 4 12" />
@@ -186,7 +185,7 @@ export default function CTA() {
                         ) : (
                             <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
                                 {submitStatus === 'error' && (
-                                    <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-xs flex items-center gap-3 animate-fade-in mb-2">
+                                    <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-none text-xs flex items-center gap-3 animate-fade-in mb-2">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
                                         Something went wrong. Please check your connection and try again.
                                     </div>
@@ -210,14 +209,24 @@ export default function CTA() {
                                 <FormField label="Primary Contact Number" required error={errors.phone}>
                                     <div className="flex gap-2 relative" ref={dropdownRef}>
                                         <div
-                                            className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-all hover:bg-[rgba(var(--white-rgb),0.08)] ${errors.phone && selectedCountry.code === 'OTHER' && !manualDialCode ? 'border-red-500/50 bg-red-500/5' : ''}`}
+                                            className={`flex items-center gap-1.5 px-3 py-3 rounded-none bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-all hover:bg-[rgba(var(--white-rgb),0.08)] ${errors.phone && selectedCountry.code === 'OTHER' && !manualDialCode ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                             onClick={(e) => {
                                                 if (selectedCountry.code !== 'OTHER' || (e.target as HTMLElement).tagName !== 'INPUT') {
                                                     setIsDropdownOpen(!isDropdownOpen);
                                                 }
                                             }}
                                         >
-                                            <span className="text-base">{selectedCountry.flag}</span>
+                                            <div className="w-5 h-3.5 flex items-center justify-center overflow-hidden">
+                                                {selectedCountry.code === 'OTHER' ? (
+                                                    <span className="text-base leading-none">🌐</span>
+                                                ) : (
+                                                    <img 
+                                                        src={`https://flagcdn.com/w40/${selectedCountry.flagCode}.png`} 
+                                                        alt={selectedCountry.name} 
+                                                        className="w-full h-auto object-cover"
+                                                    />
+                                                )}
+                                            </div>
                                             {selectedCountry.code === 'OTHER' ? (
                                                 <input
                                                     type="text"
@@ -241,7 +250,7 @@ export default function CTA() {
 
                                         {/* Dropdown Menu */}
                                         {isDropdownOpen && (
-                                            <div className="absolute top-[calc(100%+8px)] left-0 w-[240px] bg-[#1a1a2e] border border-[rgba(var(--white-rgb),0.1)] rounded-xl shadow-xl z-50 py-2 max-h-[300px] overflow-y-auto outline-hidden">
+                                            <div className="absolute top-[calc(100%+8px)] left-0 w-[240px] bg-[#1a1a2e] border border-[rgba(var(--white-rgb),0.1)] rounded-none shadow-xl z-50 py-2 max-h-[300px] overflow-y-auto outline-hidden">
                                                 {COUNTRIES.map((country) => (
                                                     <div
                                                         key={country.code}
@@ -251,7 +260,17 @@ export default function CTA() {
                                                             setIsDropdownOpen(false);
                                                         }}
                                                     >
-                                                        <span className="text-xl">{country.flag}</span>
+                                                        <div className="w-5 h-3.5 flex items-center justify-center overflow-hidden shrink-0">
+                                                            {country.code === 'OTHER' ? (
+                                                                <span className="text-lg leading-none">🌐</span>
+                                                            ) : (
+                                                                <img 
+                                                                    src={`https://flagcdn.com/w40/${country.flagCode}.png`} 
+                                                                    alt={country.name} 
+                                                                    className="w-full h-auto object-cover"
+                                                                />
+                                                            )}
+                                                        </div>
                                                         <span className="w-12 text-gray-400 font-medium">{country.dialCode}</span>
                                                         <span className="truncate">{country.name}</span>
                                                     </div>
@@ -302,7 +321,7 @@ export default function CTA() {
                                         type="checkbox"
                                         checked={nda}
                                         onChange={() => setNda(!nda)}
-                                        className="w-4 h-4 rounded border-gray-600 accent-[var(--color-accent-purple)]"
+                                        className="w-4 h-4 rounded-none border-gray-600 accent-[var(--color-accent-purple)]"
                                     />
                                     <span className="text-xs text-gray-400">
                                         I want to protect my data by signing an NDA.
