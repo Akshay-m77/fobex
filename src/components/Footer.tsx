@@ -43,12 +43,17 @@ export default function Footer() {
                     {/* Right Column: Newsletter + Socials */}
                     <FadeIn direction="left" className="flex flex-col items-end max-md:items-start gap-10">
                         <div className="w-full max-w-[420px]">
-                            <h3 className="text-white italic text-xl mb-6 font-medium">Stay Informed</h3>
+                            <h3 className="text-white italic text-xl mb-6 font-medium">
+                                <label htmlFor="newsletter-email">Stay Informed</label>
+                            </h3>
                             <div className="relative group shadow-lg">
                                 <input
                                     type="email"
+                                    id="newsletter-email"
+                                    name="newsletter-email"
                                     placeholder="Enter Email to Subscribe"
                                     className="w-full bg-white rounded-full py-4 pl-7 pr-16 text-gray-900 text-[15px] font-normal outline-none placeholder:text-gray-400"
+                                    autoComplete="email"
                                 />
                                 <button className="absolute right-1.5 top-1.5 w-11 h-11 bg-[#9D31FF] rounded-full flex items-center justify-center text-white transition-all hover:bg-[#8B2BE2] hover:scale-105 active:scale-95 cursor-pointer shadow-md">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

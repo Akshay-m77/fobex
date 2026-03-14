@@ -189,9 +189,11 @@ export default function CTA() {
                                     )}
 
                                     {/* Full Name */}
-                                    <FormField label="Full Name" required error={errors.name}>
+                                    <FormField label="Full Name" required error={errors.name} id="full-name">
                                         <input
                                             type="text"
+                                            id="full-name"
+                                            name="full-name"
                                             placeholder="Name..."
                                             className={`form-input transition-all ${errors.name ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                             value={name}
@@ -199,6 +201,7 @@ export default function CTA() {
                                                 setName(e.target.value);
                                                 if (errors.name) setErrors({ ...errors, name: '' });
                                             }}
+                                            autoComplete="name"
                                         />
                                     </FormField>
 
@@ -227,6 +230,8 @@ export default function CTA() {
                                                 {selectedCountry.code === 'OTHER' ? (
                                                     <input
                                                         type="text"
+                                                        id="dial-code"
+                                                        name="dial-code"
                                                         placeholder="+..."
                                                         className="w-12 bg-transparent border-none outline-hidden text-xs font-medium text-white placeholder-gray-600 p-0"
                                                         value={manualDialCode}
@@ -277,6 +282,8 @@ export default function CTA() {
 
                                             <input
                                                 type="tel"
+                                                id="phone"
+                                                name="phone"
                                                 placeholder="Phone Number"
                                                 className={`form-input flex-1 !w-auto ${errors.phone ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                                 value={phone}
@@ -284,14 +291,17 @@ export default function CTA() {
                                                     setPhone(e.target.value);
                                                     if (errors.phone) setErrors({ ...errors, phone: '' });
                                                 }}
+                                                autoComplete="tel"
                                             />
                                         </div>
                                     </FormField>
 
                                     {/* Email Address */}
-                                    <FormField label="Email Address" required error={errors.email}>
+                                    <FormField label="Email Address" required error={errors.email} id="email">
                                         <input
                                             type="email"
+                                            id="email"
+                                            name="email"
                                             placeholder="Email...."
                                             className={`form-input ${errors.email ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                             value={email}
@@ -299,12 +309,15 @@ export default function CTA() {
                                                 setEmail(e.target.value);
                                                 if (errors.email) setErrors({ ...errors, email: '' });
                                             }}
+                                            autoComplete="email"
                                         />
                                     </FormField>
 
                                     {/* Tell us about your project */}
-                                    <FormField label="Tell us more about your project">
+                                    <FormField label="Tell us more about your project" id="project-details">
                                         <textarea
+                                            id="project-details"
+                                            name="project-details"
                                             rows={4}
                                             className="form-input resize-none"
                                             value={message}
@@ -313,9 +326,11 @@ export default function CTA() {
                                     </FormField>
 
                                     {/* NDA Checkbox */}
-                                    <label className="flex items-center gap-2.5 cursor-pointer">
+                                    <label className="flex items-center gap-2.5 cursor-pointer" htmlFor="nda-checkbox">
                                         <input
                                             type="checkbox"
+                                            id="nda-checkbox"
+                                            name="nda-checkbox"
                                             checked={nda}
                                             onChange={() => setNda(!nda)}
                                             className="w-4 h-4 rounded-none border-gray-600 accent-[var(--color-accent-purple)]"
@@ -350,10 +365,10 @@ export default function CTA() {
 }
 
 /** Small helper for consistent form field labels */
-function FormField({ label, required, children, error }: { label: string; required?: boolean; children: React.ReactNode; error?: string }) {
+function FormField({ label, required, children, error, id }: { label: string; required?: boolean; children: React.ReactNode; error?: string; id?: string }) {
     return (
         <div className="relative">
-            <label className="text-xs text-gray-400 mb-1.5 block flex justify-between items-center pr-1 transition-all">
+            <label className="text-xs text-gray-400 mb-1.5 block flex justify-between items-center pr-1 transition-all" htmlFor={id}>
                 <span>
                     {label}
                     {required && <span className="text-[var(--color-accent-vibrant)]"> *</span>}
