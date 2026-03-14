@@ -84,9 +84,8 @@ export default function Industries() {
                         label="[Solutions Built for Your Industry]"
                         heading={
                             <>
-                                Driving Measurable Digital Growth <br className="hidden lg:block" />
-                                <span>Across </span>
-                                <span className="gradient-text">Every Industry</span>
+                                Digital Growth Across{' '}
+                                <span className="gradient-text">Industries</span>
                             </>
                         }
                         subtitle="We create custom digital solutions for startups and enterprises, blending smart technology and user-focused design to drive measurable business growth."
