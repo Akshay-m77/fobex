@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import heroImg from '../assets/hero-img.png';
 import heroMobileBg from '../assets/hero bg.png';
+import largeHeroBg from '../assets/large hero bg.png';
 import ArrowButton from './ui/ArrowButton';
 import { ChevronDownIcon } from './ui/Icons';
 import FadeIn from './ui/FadeIn';
@@ -13,21 +14,9 @@ export default function Hero() {
             ref={heroRef}
             className="relative min-h-screen max-md:min-h-[85vh] flex flex-col pt-[40vh] justify-start max-md:pt-[200px] overflow-hidden"
         >
-            {/* Background gradient */}
-            <div className="absolute inset-0 pointer-events-none max-md:hidden">
-                <div
-                    className="absolute w-[600px] h-[600px] rounded-full blur-[120px] -top-[10%] -left-[10%]"
-                    style={{
-                        background: `radial-gradient(circle, rgba(var(--accent-purple-rgb), 0.2) 0%, transparent 70%)`,
-                    }}
-                />
-                {/* Bottom glow */}
-                <div
-                    className="absolute w-full h-[200px] bottom-0 left-0"
-                    style={{
-                        background: `linear-gradient(to top, rgba(var(--accent-purple-rgb), 0.08) 0%, transparent 100%)`,
-                    }}
-                />
+            {/* Desktop hero background */}
+            <div className="absolute inset-0 pointer-events-none max-md:hidden z-0">
+                <img src={largeHeroBg} alt="Desktop Hero Background" className="w-full h-full object-cover object-center" />
             </div>
 
             {/* Mobile hero background */}
