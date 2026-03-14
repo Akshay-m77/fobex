@@ -4,6 +4,10 @@ import SectionHeader from './ui/SectionHeader';
 import ArrowButton from './ui/ArrowButton';
 import { ChevronLeftIcon, ChevronRightIcon } from './ui/Icons';
 
+import webdevImg from '../assets/testimonials/webdev.webp';
+import uiuxImg from '../assets/testimonials/uiux.webp';
+import seoImg from '../assets/testimonials/seo.webp';
+
 const testimonials = [
     {
         caseTitle: 'Web Development',
@@ -15,7 +19,7 @@ const testimonials = [
         ],
         rating: 5,
         author: 'Marcus Thorne | Operations Director',
-        gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 50%, #1a1a2e 80%)',
+        image: webdevImg,
     },
     {
         caseTitle: 'Design & UX',
@@ -27,7 +31,7 @@ const testimonials = [
         ],
         rating: 5,
         author: 'Sarah Jenkins | Product Lead',
-        gradient: 'linear-gradient(135deg, #2d1f3d 0%, #1a3a4a 40%, #3d6b5e 70%, #2d1f3d 100%)',
+        image: uiuxImg,
     },
     {
         caseTitle: 'SEO & Organic Traffic',
@@ -39,7 +43,7 @@ const testimonials = [
         ],
         rating: 5,
         author: 'David Chen | Marketing Head',
-        gradient: 'linear-gradient(135deg, #0a1628 0%, #162d50 40%, #1a3a6b 70%, #0a1628 100%)',
+        image: seoImg,
     },
 ];
 
@@ -74,7 +78,7 @@ export default function Testimonials() {
                 </FadeIn>
 
                 {/* Two-column content */}
-                <div className="flex gap-12 items-start max-md:flex-col">
+                <div className="flex gap-12 items-stretch max-md:flex-col">
                     {/* Left — Case study */}
                     <FadeIn direction="right" className="flex-1 min-w-0" delay={0.2} fullWidth>
                         <h3 className="text-2xl font-medium text-gray-900 mb-3">
@@ -86,21 +90,14 @@ export default function Testimonials() {
 
                         {/* Image placeholder */}
                         <div
-                            className="h-48 rounded-none overflow-hidden mb-6 relative transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1"
-                            style={{ background: t.gradient }}
+                            className="h-64 rounded-none overflow-hidden mb-6 relative group"
                         >
-                            <div className="absolute inset-0 transition-opacity duration-300 hover:opacity-80" style={{
-                                background: `radial-gradient(ellipse 70% 80% at 50% 60%, rgba(var(--white-rgb), 0.06) 0%, transparent 100%)`,
-                            }} />
-                            <div className="absolute bottom-0 left-[15%] w-[70%] h-[70%]" style={{
-                                background: `linear-gradient(180deg, rgba(var(--accent-blue-rgb), 0.15) 0%, rgba(var(--accent-blue-rgb), 0.25) 100%)`,
-                                borderRadius: '0',
-                                border: `1px solid rgba(var(--white-rgb), 0.08)`,
-                            }} />
-                            <div className="absolute bottom-0 left-[8%] w-[84%] h-[8%]" style={{
-                                background: `rgba(var(--white-rgb), 0.06)`,
-                                borderRadius: '0',
-                            }} />
+                            <img
+                                src={t.image}
+                                alt={t.caseTitle}
+                                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-black/10 transition-opacity duration-300 group-hover:bg-black/20" />
                         </div>
 
                         <ArrowButton href="#" variant="dark">
