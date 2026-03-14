@@ -32,8 +32,8 @@ export default function Results() {
                         label="[Client Success]"
                         heading={
                             <>
-                                <span className="text-[var(--color-accent-purple)]">Flawless execution</span> is our standard.<br />
-                                Revenue growth is <span className="text-[var(--color-accent-purple)]">our commitment.</span>
+                                Flawless <span className="text-[var(--color-accent-purple)]"> Execution</span><br />
+                                Measurable Revenue <span className="text-[var(--color-accent-purple)]">Growth</span>
                             </>
                         }
                         subtitle="We build high-performance digital solutions that drive business growth, including web development, eCommerce integration, and custom mobile app development."
