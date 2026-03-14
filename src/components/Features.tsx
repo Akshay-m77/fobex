@@ -139,9 +139,9 @@ after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] afte
                                                     transition={{ duration: 0.8 }}
                                                     src={s.image}
                                                     alt={s.title}
-                                                    className="w-full h-full object-cover opacity-60"
+                                                    className="w-full h-full object-cover opacity-85"
                                                 />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent pointer-events-none" />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
 
                                                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                                                     <motion.p
