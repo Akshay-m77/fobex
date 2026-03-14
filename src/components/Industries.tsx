@@ -24,13 +24,13 @@ const industries = [
         cta: 'Learn more about how we serves in travel and tourism',
     },
     {
-        name: 'Retail and E-Commerce',
+        name: 'Retail & E-Commerce',
         image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop',
         paragraphs: [
             'At Fobex, we transition traditional retail operations into high-performing E-Commerce storefronts.',
             'Our custom web solutions enable your retail brand to reach new heights of success through increased sales and customer loyalty.',
         ],
-        cta: 'Learn more about how we serves in retail and e-commerce',
+        cta: 'Learn more about how we serves in retail & e-commerce',
     },
     {
         name: 'Pharmaceuticals',
@@ -42,13 +42,13 @@ const industries = [
         cta: 'Learn more about how we serves in pharmaceuticals',
     },
     {
-        name: 'Luxury Goods and Jewellery',
+        name: 'Luxury Retail & Jewelry',
         image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop',
         paragraphs: [
             'At Fobex, we transform the physical elegance of your premium products into a visually appealing and captivating digital platform.',
             'We pair stunning visuals with incredibly smooth software, helping you attract premium buyers and showcase your exclusive brand to the world.',
         ],
-        cta: 'Learn more about how we serves in luxury goods and jewellery',
+        cta: 'Learn more about how we serves in luxury retail & jewelry',
     },
 ];
 
@@ -94,7 +94,7 @@ export default function Industries() {
                 </FadeIn>
 
                 {/* Content: Image + Details */}
-                <div className="flex gap-10 items-start max-md:flex-col">
+                <div className="flex gap-10 items-stretch max-md:flex-col">
                     {/* Left — Image card */}
                     <FadeIn direction="right" className="flex-1 min-w-0" delay={0.2} fullWidth>
                         <div
@@ -145,7 +145,7 @@ export default function Industries() {
                     </FadeIn>
 
                     {/* Right — Details */}
-                    <FadeIn direction="left" className="flex-1 min-w-0 pt-2" delay={0.4}>
+                    <FadeIn direction="left" className="flex-1 min-w-0 pt-2 flex flex-col" delay={0.4}>
                         <h3 className="text-2xl font-medium gradient-text mb-5">
                             {current.name}
                         </h3>
@@ -155,7 +155,7 @@ export default function Industries() {
                             </p>
                         ))}
 
-                        <div className="mt-6">
+                        <div className="mt-auto pt-6">
                             <ArrowButton href="#">
                                 {current.cta}
                             </ArrowButton>
