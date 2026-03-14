@@ -1,107 +1,107 @@
 import { NAV_LINKS, SOCIAL_LINKS } from '../constants';
-import ArrowButton from './ui/ArrowButton';
 import fobexLogo from '../assets/Fobex.svg';
 import FadeIn from './ui/FadeIn';
 
 export default function Footer() {
     return (
-        <footer className="relative bg-[var(--color-bg-footer)] pt-20 pb-12 overflow-hidden">
-            {/* Purple wave/glow effects */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div
-                    className="absolute bottom-0 right-0 w-[600px] h-[400px]"
-                    style={{
-                        background: `radial-gradient(ellipse 80% 60% at 80% 90%, rgba(var(--accent-purple-rgb), 0.25) 0%, transparent 70%)`,
-                    }}
-                />
-                <div
-                    className="absolute bottom-0 left-[20%] w-[500px] h-[300px]"
-                    style={{
-                        background: `radial-gradient(ellipse 70% 50% at 50% 100%, rgba(var(--accent-purple-rgb), 0.12) 0%, transparent 70%)`,
-                    }}
-                />
-                {/* Curved lines */}
-                <svg className="absolute bottom-0 left-0 w-full h-[300px] opacity-20" viewBox="0 0 1200 300" fill="none" preserveAspectRatio="none">
-                    <path d="M0 200 Q300 100 600 180 Q900 260 1200 150" stroke="url(#footerGrad)" strokeWidth="1.5" fill="none" />
-                    <path d="M0 240 Q350 140 650 220 Q950 300 1200 190" stroke="url(#footerGrad)" strokeWidth="1" fill="none" />
-                    <defs>
-                        <linearGradient id="footerGrad" x1="0" y1="0" x2="1200" y2="0">
-                            <stop offset="0%" stopColor="var(--color-accent-purple)" stopOpacity="0.3" />
-                            <stop offset="50%" stopColor="var(--color-accent-purple)" stopOpacity="0.8" />
-                            <stop offset="100%" stopColor="var(--color-accent-blue)" stopOpacity="0.3" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-
+        <footer
+            className="relative pt-24 pb-8 overflow-hidden font-sans"
+            style={{ background: 'radial-gradient(70.54% 70.54% at 50% 113.81%, #351750 0%, #000000 100%)' }}
+        >
             <div className="max-w-[var(--container-lg)] mx-auto px-4 md:px-6 relative z-10">
-                {/* Top row: Heading + Logo */}
-                <FadeIn className="flex items-start justify-between mb-12 max-md:flex-col max-md:gap-8" fullWidth>
-                    <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium italic leading-[1.2] gradient-text">
-                        Set bold goals.
-                        <br />
-                        Rise beyond limits.
-                    </h2>
 
-                    <img src={fobexLogo} alt="Fobex Logo" className="h-10 w-auto filter invert brightness-0" />
-                </FadeIn>
+                {/* Top Section: Branding & Newsletter */}
+                <div className="flex justify-between items-start gap-12 mb-20 max-md:flex-col max-md:items-start">
 
-                {/* Nav links */}
-                <FadeIn className="flex items-center gap-8 mb-10 flex-wrap" delay={0.2} fullWidth>
-                    {NAV_LINKS.map((link, i) => (
-                        <a
-                            key={i}
-                            href={link.href}
-                            className="text-sm text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block"
-                        >
-                            {link.label}
-                        </a>
-                    ))}
-                </FadeIn>
+                    {/* Left Column: Brand Info */}
+                    <FadeIn direction="right" className="flex flex-col gap-10 max-w-[450px]">
+                        <div>
+                            <img src={fobexLogo} alt="Fobex" className="h-9 filter invert brightness-0 mb-8" />
+                            <p className="text-[#e5e7eb] text-[15px] leading-relaxed font-normal">
+                                A future-focused brand group building technology-driven ventures. Structured for the long term.
+                            </p>
+                        </div>
 
-                {/* Bottom row: Newsletter + Social/Address */}
-                <FadeIn className="flex items-end justify-between gap-12 max-md:flex-col max-md:items-start max-md:gap-10" delay={0.4} fullWidth>
-                    {/* Left — Newsletter */}
-                    <div className="max-w-[320px]">
-                        <label className="text-xs text-gray-400 mb-1.5 block">
-                            Enter Your Email Address
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="form-input mb-4"
-                        />
-                        <ArrowButton href="#">
-                            Subscribe to Newsletter
-                        </ArrowButton>
-                    </div>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex items-center gap-3.5 text-[#e5e7eb] text-sm">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                <span className="font-light">Kochi, India</span>
+                            </div>
+                            <div className="flex items-center gap-3.5 text-[#e5e7eb] text-sm">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                                <span className="font-light">Info@fobexglobal.com</span>
+                            </div>
+                        </div>
+                    </FadeIn>
 
-                    {/* Right — Social + Address */}
-                    <div className="text-right max-md:text-left">
-                        {/* Social icons */}
-                        <div className="flex items-center gap-3 mb-5 justify-end max-md:justify-start">
+                    {/* Right Column: Newsletter + Socials */}
+                    <FadeIn direction="left" className="flex flex-col items-end max-md:items-start gap-10">
+                        <div className="w-full max-w-[420px]">
+                            <h3 className="text-white italic text-xl mb-6 font-medium">Stay Informed</h3>
+                            <div className="relative group shadow-lg">
+                                <input
+                                    type="email"
+                                    placeholder="Enter Email to Subscribe"
+                                    className="w-full bg-white rounded-full py-4 pl-7 pr-16 text-gray-900 text-[15px] font-normal outline-none placeholder:text-gray-400"
+                                />
+                                <button className="absolute right-1.5 top-1.5 w-11 h-11 bg-[#9D31FF] rounded-full flex items-center justify-center text-white transition-all hover:bg-[#8B2BE2] hover:scale-105 active:scale-95 cursor-pointer shadow-md">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <line x1="7" y1="17" x2="17" y2="7" />
+                                        <polyline points="7 7 17 7 17 17" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Social Icons */}
+                        <div className="flex items-center gap-3.5">
                             {SOCIAL_LINKS.map((s, i) => (
                                 <a
                                     key={i}
                                     href="#"
+                                    className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-black hover:bg-[#9D31FF] hover:text-white transition-all duration-300 shadow-sm"
                                     aria-label={s.label}
-                                    className="w-8 h-8 rounded-none bg-white flex items-center justify-center text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-[0_4px_12px_rgba(255,255,255,0.3)]"
                                 >
-                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                                    <svg width="18" height="18" viewBox={s.viewBox || "0 0 24 24"} fill="currentColor">
                                         <path d={s.path} />
                                     </svg>
                                 </a>
                             ))}
                         </div>
+                    </FadeIn>
+                </div>
 
-                        {/* Address */}
-                        <div className="text-sm text-gray-400 leading-relaxed">
-                            <p>18/75 - TownHall Road, Thrissur  Kerala</p>
-                            <p>680005</p>
-                            <p>+91 9539217426</p>
-                        </div>
-                    </div>
-                </FadeIn>
+                {/* Navigation Links Area */}
+                <div className="border-t border-[#1a1a1a] py-14">
+                    <FadeIn className="flex justify-center flex-wrap gap-x-14 gap-y-6">
+                        {NAV_LINKS.map((link, i) => (
+                            <a
+                                key={i}
+                                href={link.href}
+                                className="text-[#9ca3af] text-base hover:text-white transition-colors tracking-wide font-normal"
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                    </FadeIn>
+                </div>
+
+                {/* Footer Bottom Bar */}
+                <div className="border-t border-[#1a1a1a] pt-10 flex items-center justify-between max-md:flex-col max-md:gap-6">
+                    <p className="text-[11px] text-[#4b5563] font-medium tracking-tight">
+                        © 2026 Fobexglobal all rights reserved
+                    </p>
+                    <p className="text-[11px] text-[#4b5563] font-medium tracking-tight text-right max-md:text-center">
+                        Building Powerful Digital Experiences that perform
+                    </p>
+                </div>
+
             </div>
         </footer>
     );
