@@ -76,7 +76,7 @@ function ScrollRevealSection({
             }
 
             // Word becomes bold as it lights up
-            wordEl.style.fontWeight = reveal > 0.4 ? '400' : '300';
+            wordEl.style.fontWeight = reveal > 0.4 ? '500' : '300';
         });
     }, [allWords.length, dark]);
 
@@ -104,7 +104,7 @@ function ScrollRevealSection({
                     </FadeIn>
 
                     {/* Main statement with word-by-word scroll reveal */}
-                    <h2 className="text-[3.5rem] max-md:text-[2.2rem] leading-[1.3] cursor-default transition-all">
+                    <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.2] tracking-[-0.02em] cursor-default transition-all">
                         {allWords.map((word, i) => (
                             <span
                                 key={i}
