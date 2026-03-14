@@ -43,7 +43,7 @@ export default function Results() {
                             <div className="group cursor-pointer">
                                 {/* Thumbnail */}
                                 <div
-                                    className="relative h-56 rounded-2xl overflow-hidden mb-5 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)] group-hover:scale-[1.01]"
+                                    className="relative h-56 rounded-none overflow-hidden mb-5 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)] group-hover:scale-[1.01]"
                                 >
                                     <img
                                         src={p.image}

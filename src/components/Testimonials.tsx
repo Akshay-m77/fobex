@@ -86,7 +86,7 @@ export default function Testimonials() {
 
                         {/* Image placeholder */}
                         <div
-                            className="h-48 rounded-2xl overflow-hidden mb-6 relative transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1"
+                            className="h-48 rounded-none overflow-hidden mb-6 relative transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1"
                             style={{ background: t.gradient }}
                         >
                             <div className="absolute inset-0 transition-opacity duration-300 hover:opacity-80" style={{
@@ -94,12 +94,12 @@ export default function Testimonials() {
                             }} />
                             <div className="absolute bottom-0 left-[15%] w-[70%] h-[70%]" style={{
                                 background: `linear-gradient(180deg, rgba(var(--accent-blue-rgb), 0.15) 0%, rgba(var(--accent-blue-rgb), 0.25) 100%)`,
-                                borderRadius: '8px 8px 0 0',
+                                borderRadius: '0',
                                 border: `1px solid rgba(var(--white-rgb), 0.08)`,
                             }} />
                             <div className="absolute bottom-0 left-[8%] w-[84%] h-[8%]" style={{
                                 background: `rgba(var(--white-rgb), 0.06)`,
-                                borderRadius: '0 0 4px 4px',
+                                borderRadius: '0',
                             }} />
                         </div>
 
@@ -121,7 +121,7 @@ export default function Testimonials() {
 
                         {/* Author */}
                         <div className="flex items-center gap-3 mt-8 group cursor-default">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white text-sm font-semibold transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                            <div className="w-10 h-10 rounded-none bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white text-sm font-semibold transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                                 {t.author.charAt(0)}
                             </div>
                             <div className="transition-transform duration-300 group-hover:translate-x-1">

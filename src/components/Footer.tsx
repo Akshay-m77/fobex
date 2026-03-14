@@ -85,7 +85,7 @@ export default function Footer() {
                                     key={i}
                                     href="#"
                                     aria-label={s.label}
-                                    className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-[0_4px_12px_rgba(255,255,255,0.3)]"
+                                    className="w-8 h-8 rounded-none bg-white flex items-center justify-center text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-[0_4px_12px_rgba(255,255,255,0.3)]"
                                 >
                                     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
                                         <path d={s.path} />

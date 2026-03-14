@@ -99,7 +99,7 @@ after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] afte
                 <div className="hidden max-md:flex flex-col gap-2">
                     {services.map((s, i) => (
                         <div key={i} onClick={() => toggleFeature(i)} className="cursor-pointer">
-                            <div className={`flex items-center justify-between px-6 py-5 rounded-sm transition-all duration-300 ${activeFeature === i ? 'bg-white border-x border-t border-gray-100 shadow-sm' : 'bg-[#f6f8fb] text-gray-900 border border-transparent'}`}>
+                            <div className={`flex items-center justify-between px-6 py-5 rounded-none transition-all duration-300 ${activeFeature === i ? 'bg-white border-x border-t border-gray-100 shadow-sm' : 'bg-[#f6f8fb] text-gray-900 border border-transparent'}`}>
                                 <span className={`italic font-medium text-sm ${activeFeature === i ? 'text-[var(--color-accent-purple)]' : 'text-gray-900'}`}>{s.title}</span>
                                 <motion.svg
                                     width="16"
@@ -124,7 +124,7 @@ after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] afte
                                         animate={{ height: 'auto', opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
-                                        className="overflow-hidden bg-black border-x border-b border-gray-100 shadow-sm rounded-b-sm"
+                                        className="overflow-hidden bg-black border-x border-b border-gray-100 shadow-sm rounded-none"
                                     >
                                         <motion.div
                                             initial={{ y: 20, opacity: 0 }}

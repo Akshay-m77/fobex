@@ -80,6 +80,10 @@ body {
   color: var(--color-text-primary);
 }
 
+img {
+  border-radius: 0 !important;
+}
+
 /* Gradient text utility */
 .gradient-text {
   color: #9D31FF;

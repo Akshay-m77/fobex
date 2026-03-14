@@ -99,7 +99,7 @@ export default function Industries() {
                     {/* Left — Image card */}
                     <FadeIn direction="right" className="flex-1 min-w-0" delay={0.2} fullWidth>
                         <div
-                            className="relative h-72 max-md:h-56 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl group"
+                            className="relative h-72 max-md:h-56 rounded-none overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl group"
                         >
                             <img
                                 src={current.image}
