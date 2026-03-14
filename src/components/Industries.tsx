@@ -4,11 +4,11 @@ import ArrowButton from './ui/ArrowButton';
 import { ChevronLeftIcon, ChevronRightIcon } from './ui/Icons';
 import FadeIn from './ui/FadeIn';
 
-import healthcareImg from '../assets/industries/Healthcare.jpg';
-import travelImg from '../assets/industries/Travel.jpg';
-import retailImg from '../assets/industries/Retail .jpg';
-import pharmaImg from '../assets/industries/Pharmaceuticals.jpg';
-import luxuryImg from '../assets/industries/Luxury .jpg';
+import healthcareImg from '../assets/Industries/Healthcare.jpg';
+import travelImg from '../assets/Industries/Travel.jpg';
+import retailImg from '../assets/Industries/Retail .jpg';
+import pharmaImg from '../assets/Industries/Pharmaceuticals.jpg';
+import luxuryImg from '../assets/Industries/Luxury .jpg';
 
 const industries = [
     {
