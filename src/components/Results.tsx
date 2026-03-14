@@ -43,19 +43,19 @@ export default function Results() {
                             <div className="group cursor-pointer">
                                 {/* Thumbnail */}
                                 <div
-                                    className="relative h-56 rounded-none overflow-hidden mb-5 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)] group-hover:scale-[1.01]"
+                                    className="relative h-56 rounded-none overflow-hidden mb-5"
                                 >
                                     <img
                                         src={p.image}
                                         alt={p.category}
-                                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                                     />
                                 </div>
 
-                                <p className="text-sm font-semibold text-[var(--color-accent-purple)] mb-1.5 transition-transform duration-300 group-hover:translate-x-1">
+                                <p className="text-sm font-semibold text-[var(--color-accent-purple)] mb-1.5">
                                     {p.category}
                                 </p>
-                                <p className="text-sm text-gray-600 leading-relaxed transition-colors duration-300 group-hover:text-gray-900">
+                                <p className="text-sm text-gray-600 leading-relaxed">
                                     {p.title}
                                 </p>
                             </div>
