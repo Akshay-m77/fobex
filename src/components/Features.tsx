@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import FadeIn from './ui/FadeIn';
 
 import img1 from '../assets/features/Group 1.png';
@@ -42,7 +43,11 @@ const services = [
 ];
 
 export default function Features() {
-    const [activeFeature, setActiveFeature] = useState(1);
+    const [activeFeature, setActiveFeature] = useState(-1);
+
+    const toggleFeature = (index: number) => {
+        setActiveFeature(activeFeature === index ? -1 : index);
+    };
 
     return (
         <section className="bg-[var(--color-bg-white)] py-24 max-md:py-16" id="features">
@@ -65,7 +70,7 @@ export default function Features() {
                     {services.map((s, i) => (
                         <FadeIn key={i} delay={i * 0.1}>
                             <div
-                                className="group bg-[#F4F8FF] overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(124,58,237,0.15)]"
+                                className="group bg-[#F4F8FF] overflow-hidden transition-all duration-300"
                             >
                                 {/* Image thumbnail */}
                                 <div className="overflow-hidden bg-black">
@@ -93,31 +98,66 @@ after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] afte
                 {/* Mobile Accordion */}
                 <div className="hidden max-md:flex flex-col gap-2">
                     {services.map((s, i) => (
-                        <div key={i} onClick={() => setActiveFeature(i)} className="cursor-pointer">
-                            {activeFeature === i ? (
-                                <div className="w-full relative overflow-hidden transition-all duration-500 bg-black">
-                                    <div className="h-40 relative w-full">
-                                        <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-80" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                        <div key={i} onClick={() => toggleFeature(i)} className="cursor-pointer">
+                            <div className={`flex items-center justify-between px-6 py-5 rounded-sm transition-all duration-300 ${activeFeature === i ? 'bg-white border-x border-t border-gray-100 shadow-sm' : 'bg-[#f6f8fb] text-gray-900 border border-transparent'}`}>
+                                <span className={`italic font-medium text-sm ${activeFeature === i ? 'text-[var(--color-accent-purple)]' : 'text-gray-900'}`}>{s.title}</span>
+                                <motion.svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    animate={{ rotate: activeFeature === i ? 90 : 0 }}
+                                    className={activeFeature === i ? 'text-[var(--color-accent-purple)]' : 'text-gray-900'}
+                                >
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </motion.svg>
+                            </div>
 
-                                        <div className="absolute bottom-5 left-5 right-5 z-10 text-left">
-                                            <h3 className="text-base font-medium text-white mb-1.5">
-                                                {s.title}
-                                            </h3>
-                                            <p className="text-[11px] text-white/80 leading-relaxed max-w-[90%] whitespace-normal overflow-hidden overflow-ellipsis line-clamp-2">
-                                                {s.description}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className="flex items-center justify-between px-6 py-5 bg-[#f6f8fb] rounded-sm transition-all duration-300">
-                                    <span className="italic font-medium text-sm text-gray-900">{s.title}</span>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-900">
-                                        <path d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
-                                </div>
-                            )}
+                            <AnimatePresence>
+                                {activeFeature === i && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: 'auto', opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+                                        className="overflow-hidden bg-black border-x border-b border-gray-100 shadow-sm rounded-b-sm"
+                                    >
+                                        <motion.div
+                                            initial={{ y: 20, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            transition={{ delay: 0.1, duration: 0.4 }}
+                                            className="w-full relative"
+                                        >
+                                            <div className="h-44 relative w-full overflow-hidden">
+                                                <motion.img
+                                                    initial={{ scale: 1.1 }}
+                                                    animate={{ scale: 1 }}
+                                                    transition={{ duration: 0.8 }}
+                                                    src={s.image}
+                                                    alt={s.title}
+                                                    className="w-full h-full object-cover opacity-60"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent pointer-events-none" />
+
+                                                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
+                                                    <motion.p
+                                                        initial={{ y: 10, opacity: 0 }}
+                                                        animate={{ y: 0, opacity: 1 }}
+                                                        transition={{ delay: 0.2, duration: 0.4 }}
+                                                        className="text-[13px] text-white/90 leading-relaxed max-w-[95%] whitespace-normal"
+                                                    >
+                                                        {s.description}
+                                                    </motion.p>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     ))}
                 </div>
