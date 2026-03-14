@@ -1,5 +1,6 @@
 import SectionHeader from './ui/SectionHeader';
 import FadeIn from './ui/FadeIn';
+import { ExternalLinkIcon } from './ui/Icons';
 
 import infiniosImg from '../assets/results/infinios.webp';
 import zestanoImg from '../assets/results/zestano.webp';
@@ -64,8 +65,9 @@ export default function Results() {
                                         rel="noopener noreferrer"
                                         className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/10 z-10"
                                     >
-                                        <span className="px-6 py-2 bg-white/95 text-black text-xs font-semibold tracking-widest uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-xl">
-                                            View More
+                                        <span className="flex items-center gap-2 px-6 py-2 bg-white/95 text-black text-xs font-semibold tracking-widest uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-xl">
+                                            Visit Website
+                                            <ExternalLinkIcon size={12} />
                                         </span>
                                     </a>
                                 </div>
