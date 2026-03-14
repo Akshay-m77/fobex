@@ -74,7 +74,7 @@ export default function Navbar() {
                                     key={i}
                                     href={link.href}
                                     onClick={handleClick}
-                                    className={`flex items-center h-full max-md:h-auto text-sm font-medium transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gradient-to-r after:from-[var(--color-accent-purple)] after:to-[var(--color-accent-cyan)] after:transition-all after:duration-250 hover:after:w-full max-md:text-2xl ${isActive
+                                    className={`flex items-center h-full max-md:h-auto text-sm font-medium transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[var(--color-accent-purple)] after:transition-all after:duration-250 hover:after:w-full max-md:text-2xl ${isActive
                                         ? `${scrolled ? 'text-gray-900' : 'text-white'} after:w-full`
                                         : `${scrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/80 hover:text-white'} after:w-0`
                                         }`}
