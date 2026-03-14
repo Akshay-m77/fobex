@@ -100,9 +100,9 @@ export default function Process() {
                                             className="relative text-sm font-medium text-gray-800 pb-2 border-b border-gray-200"
                                         >
                                             <span className="relative z-10">{item}</span>
-                                            <div 
-                                                className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[var(--color-accent-purple)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                                                style={{ transitionDelay: `${j * 50}ms` }}
+                                            <div
+                                                className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[var(--color-accent-purple)] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-3000 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                                style={{ transitionDelay: `${j * 200}ms` }}
                                             />
                                         </div>
                                     ))}
