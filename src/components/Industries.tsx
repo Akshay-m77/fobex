@@ -67,8 +67,6 @@ export default function Industries() {
         return () => clearInterval(timer);
     }, [active]);
 
-    // Derived array of inactive industries for the bottom bar
-    const inactiveIndustries = industries.map((ind, idx) => ({ ...ind, originalIndex: idx })).filter((_, idx) => idx !== active);
 
     return (
         <section className="bg-[var(--color-bg-dark)] py-24 max-md:py-16" id="industries">
@@ -113,29 +111,23 @@ export default function Industries() {
                             {/* Text Container at Bottom inside Image */}
                             <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col justify-end">
 
-                                {/* Active Tab (Large Heading) */}
-                                <h3
-                                    key={`active-${active}`}
-                                    className="text-[3rem] max-md:text-[2rem] font-medium text-white mb-2 leading-tight"
-                                    style={{ animation: 'fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards' }}
-                                >
-                                    {current.name}
-                                </h3>
-
-                                {/* Inactive Tabs List */}
+                                {/* Industry List with Highlight for Active Item */}
                                 <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm max-md:text-xs">
-                                    {inactiveIndustries.map((ind, idx, arr) => (
-                                        <div key={ind.originalIndex} className="flex items-center gap-2.5">
+                                    {industries.map((ind, i) => (
+                                        <div key={i} className="flex items-center gap-2.5">
                                             <span
-                                                className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
+                                                className={`transition-all duration-300 cursor-pointer ${i === active
+                                                    ? 'text-white font-medium underline underline-offset-4 decoration-[var(--color-accent-purple)]'
+                                                    : 'text-gray-400 hover:text-white'
+                                                    }`}
                                                 onClick={(e) => {
                                                     e.stopPropagation();
-                                                    setActive(ind.originalIndex);
+                                                    setActive(i);
                                                 }}
                                             >
                                                 {ind.name}
                                             </span>
-                                            {idx < arr.length - 1 && (
+                                            {i < industries.length - 1 && (
                                                 <span className="text-gray-600 font-bold text-[10px]">•</span>
                                             )}
                                         </div>
@@ -146,8 +138,8 @@ export default function Industries() {
                     </FadeIn>
 
                     {/* Right — Details */}
-                    <FadeIn direction="left" className="flex-1 min-w-0 pt-2 flex flex-col" delay={0.4}>
-                        <h3 className="text-2xl font-medium gradient-text mb-5">
+                    <FadeIn direction="left" className="flex-1 min-w-0 flex flex-col" delay={0.4}>
+                        <h3 className="text-2xl font-medium gradient-text mb-5 -mt-1.5 px-0.5">
                             {current.name}
                         </h3>
                         {current.paragraphs.map((p, i) => (
