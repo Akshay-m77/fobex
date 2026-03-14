@@ -56,7 +56,7 @@ export default function Features() {
                 <FadeIn>
                     <div className="text-center mb-14">
                         <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.2] tracking-[-0.02em] text-gray-900 mb-5">
-                            We work with forward-thinking brands <br /> to create high-quality digital spaces.
+                            One Partner - Every Digital Edge <br />Your Brand Needs
                         </h2>
                         <p className="text-sm text-gray-500 mx-auto leading-relaxed">
                             We focus on user clarity and system speed from day one so your digital presence grows smoothly.<br className="hidden md:block" />

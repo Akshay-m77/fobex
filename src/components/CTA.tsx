@@ -41,9 +41,9 @@ export default function CTA() {
 
     const validateForm = () => {
         const newErrors: Record<string, string> = {};
-        
+
         if (!name.trim()) newErrors.name = 'Full Name is required';
-        
+
         if (!phone.trim()) {
             newErrors.phone = 'Phone number is required';
         } else if (phone.length < 7) {
@@ -53,22 +53,22 @@ export default function CTA() {
         if (selectedCountry.code === 'OTHER' && !manualDialCode.trim()) {
             newErrors.phone = 'Please enter a dial code';
         }
-        
+
         if (!email.trim()) {
             newErrors.email = 'Email address is required';
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             newErrors.email = 'Please enter a valid email address';
         }
-        
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (!validateForm()) return;
-        
+
         const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
         const secret = import.meta.env.VITE_FORM_SECRET;
 
@@ -82,7 +82,7 @@ export default function CTA() {
         setErrors({});
 
         const dialCode = selectedCountry.code === 'OTHER' ? manualDialCode : selectedCountry.dialCode;
-        
+
         const data = {
             name,
             phone: `'${dialCode} ${phone}`,
@@ -100,7 +100,7 @@ export default function CTA() {
                 },
                 body: JSON.stringify(data)
             });
-            
+
             setSubmitStatus('success');
             setName('');
             setPhone('');
@@ -126,7 +126,7 @@ export default function CTA() {
                         <h2 className="text-[3.5rem] max-md:text-[2.2rem] font-medium leading-[1.15] mb-10">
                             <span className="text-white">Let's Talk</span>
                             <br />
-                            <span className="text-[var(--color-accent-purple)]">Business</span>
+                            <span className="gradient-text">Business</span>
                         </h2>
 
                         <blockquote className="text-sm italic text-gray-400 leading-relaxed mb-3 max-w-[300px]">
@@ -166,7 +166,7 @@ export default function CTA() {
                     <FadeIn direction="left" className="flex-1 min-w-0 transition-all duration-500" delay={0.4} fullWidth>
                         {submitStatus === 'success' ? (
                             <div className="bg-[rgba(var(--accent-purple-rgb),0.05)] border border-[var(--color-accent-purple)] rounded-3xl p-12 text-center animate-fade-in">
-                                <div className="w-20 h-20 bg-[var(--color-accent-purple)] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(157,49,255,0.4)]">
+                                <div className="w-20 h-20 bg-[var(--color-accent-vibrant)] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(157,49,255,0.4)]">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                         <polyline points="20 6 9 17 4 12" />
                                     </svg>
@@ -175,23 +175,23 @@ export default function CTA() {
                                 <p className="text-gray-400 mb-10 leading-relaxed text-sm">
                                     Your enquiry has been received. Our team will reach out to you within the next 24 hours to discuss your project.
                                 </p>
-                                <button 
+                                <button
                                     onClick={() => setSubmitStatus('idle')}
                                     className="text-[var(--color-accent-purple)] text-sm font-medium hover:underline flex items-center gap-2 mx-auto"
                                 >
                                     Send another message
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                                 </button>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
                                 {submitStatus === 'error' && (
                                     <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-xs flex items-center gap-3 animate-fade-in mb-2">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
                                         Something went wrong. Please check your connection and try again.
                                     </div>
                                 )}
-                                
+
                                 {/* Full Name */}
                                 <FormField label="Full Name" required error={errors.name}>
                                     <input
@@ -201,7 +201,7 @@ export default function CTA() {
                                         value={name}
                                         onChange={(e) => {
                                             setName(e.target.value);
-                                            if (errors.name) setErrors({...errors, name: ''});
+                                            if (errors.name) setErrors({ ...errors, name: '' });
                                         }}
                                     />
                                 </FormField>
@@ -209,7 +209,7 @@ export default function CTA() {
                                 {/* Primary Contact Number */}
                                 <FormField label="Primary Contact Number" required error={errors.phone}>
                                     <div className="flex gap-2 relative" ref={dropdownRef}>
-                                        <div 
+                                        <div
                                             className={`flex items-center gap-1.5 px-3 py-3 rounded-xl bg-[rgba(var(--white-rgb),0.04)] border border-[rgba(var(--white-rgb),0.08)] text-sm text-gray-300 cursor-pointer shrink-0 transition-all hover:bg-[rgba(var(--white-rgb),0.08)] ${errors.phone && selectedCountry.code === 'OTHER' && !manualDialCode ? 'border-red-500/50 bg-red-500/5' : ''}`}
                                             onClick={(e) => {
                                                 if (selectedCountry.code !== 'OTHER' || (e.target as HTMLElement).tagName !== 'INPUT') {
@@ -219,14 +219,14 @@ export default function CTA() {
                                         >
                                             <span className="text-base">{selectedCountry.flag}</span>
                                             {selectedCountry.code === 'OTHER' ? (
-                                                <input 
+                                                <input
                                                     type="text"
                                                     placeholder="+..."
                                                     className="w-12 bg-transparent border-none outline-hidden text-xs font-medium text-white placeholder-gray-600 p-0"
                                                     value={manualDialCode}
                                                     onChange={(e) => {
                                                         setManualDialCode(e.target.value);
-                                                        if (errors.phone) setErrors({...errors, phone: ''});
+                                                        if (errors.phone) setErrors({ ...errors, phone: '' });
                                                     }}
                                                     onClick={(e) => e.stopPropagation()}
                                                     autoFocus
@@ -243,7 +243,7 @@ export default function CTA() {
                                         {isDropdownOpen && (
                                             <div className="absolute top-[calc(100%+8px)] left-0 w-[240px] bg-[#1a1a2e] border border-[rgba(var(--white-rgb),0.1)] rounded-xl shadow-xl z-50 py-2 max-h-[300px] overflow-y-auto outline-hidden">
                                                 {COUNTRIES.map((country) => (
-                                                    <div 
+                                                    <div
                                                         key={country.code}
                                                         className="flex items-center gap-3 px-4 py-2.5 hover:bg-[rgba(var(--white-rgb),0.05)] cursor-pointer transition-colors text-sm text-gray-300"
                                                         onClick={() => {
@@ -266,7 +266,7 @@ export default function CTA() {
                                             value={phone}
                                             onChange={(e) => {
                                                 setPhone(e.target.value);
-                                                if (errors.phone) setErrors({...errors, phone: ''});
+                                                if (errors.phone) setErrors({ ...errors, phone: '' });
                                             }}
                                         />
                                     </div>
@@ -281,18 +281,10 @@ export default function CTA() {
                                         value={email}
                                         onChange={(e) => {
                                             setEmail(e.target.value);
-                                            if (errors.email) setErrors({...errors, email: ''});
+                                            if (errors.email) setErrors({ ...errors, email: '' });
                                         }}
                                     />
                                 </FormField>
-
-                                {/* Schedule call link */}
-                                <p className="text-xs text-gray-500">
-                                    We will call you ASAP or you can{' '}
-                                    <a href="#" className="text-[var(--color-accent-purple)] underline hover:text-[var(--color-accent-purple-light)] transition-colors">
-                                        schedule a call.
-                                    </a>
-                                </p>
 
                                 {/* Tell us about your project */}
                                 <FormField label="Tell us more about your project">
@@ -346,13 +338,13 @@ function FormField({ label, required, children, error }: { label: string; requir
             <label className="text-xs text-gray-400 mb-1.5 block flex justify-between items-center pr-1 transition-all">
                 <span>
                     {label}
-                    {required && <span className="text-[var(--color-accent-purple)]"> *</span>}
+                    {required && <span className="text-[var(--color-accent-vibrant)]"> *</span>}
                 </span>
             </label>
             {children}
             {error && (
                 <div className="text-[10px] text-red-500 mt-1.5 pl-1 flex items-center gap-1.5 animate-fade-in absolute -bottom-4.5 left-0">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
                     {error}
                 </div>
             )}

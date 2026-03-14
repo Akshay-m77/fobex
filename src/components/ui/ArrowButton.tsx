@@ -40,7 +40,7 @@ export default function ArrowButton({
     const inner = (
         <>
             <span className={`relative z-10 text-gray-300 transition-all duration-300 ${disabled ? '' : 'group-hover:text-black'}`}>{children}</span>
-            <span className={`w-9 h-9 rounded-full bg-[var(--color-accent-purple)] flex items-center justify-center text-white shrink-0 transition-all duration-300 relative z-10 shadow-[0_0_15px_rgba(139,92,246,0.3)] ${disabled ? '' : 'group-hover:text-black group-hover:scale-105'}`}>
+            <span className={`w-9 h-9 rounded-full bg-[var(--color-accent-vibrant)] flex items-center justify-center text-white shrink-0 transition-all duration-300 relative z-10 shadow-[0_0_15px_rgba(139,92,246,0.3)] ${disabled ? '' : 'group-hover:text-black group-hover:scale-105'}`}>
                 <ArrowIcon />
             </span>
         </>

@@ -20,7 +20,7 @@ export default function SectionHeader({
     return (
         <div className={`text-center mb-14 ${className}`}>
             {label && (
-                <p className="text-sm font-normal leading-[30px] tracking-normal uppercase text-center text-[var(--color-accent-purple)] mb-5">
+                <p className="text-sm font-normal leading-[30px] tracking-normal uppercase text-center gradient-text mb-5">
                     {label}
                 </p>
             )}

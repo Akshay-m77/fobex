@@ -86,7 +86,7 @@ export default function Industries() {
                             <>
                                 Driving Measurable Digital Growth <br className="hidden lg:block" />
                                 <span>Across </span>
-                                <span className="text-[var(--color-accent-purple)]">Every Industry</span>
+                                <span className="gradient-text">Every Industry</span>
                             </>
                         }
                         subtitle="We create custom digital solutions for startups and enterprises, blending smart technology and user-focused design to drive measurable business growth."
@@ -147,7 +147,7 @@ export default function Industries() {
 
                     {/* Right — Details */}
                     <FadeIn direction="left" className="flex-1 min-w-0 pt-2" delay={0.4}>
-                        <h3 className="text-2xl font-medium text-[var(--color-accent-purple)] mb-5">
+                        <h3 className="text-2xl font-medium gradient-text mb-5">
                             {current.name}
                         </h3>
                         {current.paragraphs.map((p, i) => (

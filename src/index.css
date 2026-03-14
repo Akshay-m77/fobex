@@ -29,10 +29,12 @@
   --color-text-placeholder: #4b5563;
 
   /* Accents */
-  --color-accent-purple: #9D31FF;
+  --color-accent-purple: #351750;
   --color-accent-blue: #3b82f6;
   --color-accent-cyan: #06b6d4;
   --color-accent-purple-light: #8b5cf6;
+  --color-accent-vibrant: #9D31FF;
+  --color-accent-vibrant-alt: #BF7BFF;
 
   /* White overlays (for glass effects, buttons, etc.) */
   --color-overlay-light: rgba(255, 255, 255, 0.06);
@@ -48,7 +50,7 @@
  */
 :root {
   /* Colors */
-  --accent-purple-rgb: 124, 58, 237;
+  --accent-purple-rgb: 157, 49, 255;
   --accent-blue-rgb: 59, 130, 246;
   --white-rgb: 255, 255, 255;
   --bg-primary-rgb: 10, 10, 15;
