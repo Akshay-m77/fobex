@@ -1,21 +1,25 @@
 import SectionHeader from './ui/SectionHeader';
 import FadeIn from './ui/FadeIn';
 
+import infiniosImg from '../assets/results/infinios.webp';
+import zestanoImg from '../assets/results/zestano.webp';
+import vacationsTravelImg from '../assets/results/Vacations Travel.webp';
+
 const projects = [
     {
         category: 'Infinios | Corporate Consulting',
         title: "We helped a Bangalore-based marketing firm grow with a lead generation website, improving search visibility and increasing qualified client leads.",
-        image: 'https://images.unsplash.com/photo-1522792011400-988365922c26?q=80&w=800&auto=format&fit=crop',
+        image: infiniosImg,
     },
     {
         category: 'Zestano | Food and Beverage',
         title: 'We built a localized website and digital identity for a Kerala café, improving local search visibility, foot traffic, and daily sales.',
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop',
+        image: zestanoImg,
     },
     {
         category: 'Vacations Travel | Travel and Tourism',
         title: 'We built a global travel booking platform for a UAE client, improving user navigation, visa selection, and online booking conversions.',
-        image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
+        image: vacationsTravelImg,
     },
 ];
 
