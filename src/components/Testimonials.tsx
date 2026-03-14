@@ -106,8 +106,8 @@ export default function Testimonials() {
                     </FadeIn>
 
                     {/* Right — Testimonial quote */}
-                    <FadeIn direction="left" className="flex-1 min-w-0 pt-2" delay={0.4} fullWidth>
-                        <h3 className="text-[1.75rem] max-md:text-xl font-medium text-gray-900 leading-[1.3] mb-6 transition-colors duration-300 hover:text-[var(--color-accent-purple)]">
+                    <FadeIn direction="left" className="flex-1 min-w-0 flex flex-col h-full" delay={0.4} fullWidth>
+                        <h3 className="text-[1.75rem] max-md:text-xl font-medium text-gray-900 leading-[1.3] mb-6 transition-colors duration-300 hover:text-[var(--color-accent-purple)] -mt-1.5">
                             {t.quoteTitle}
                         </h3>
                         {t.quoteBody.map((p, i) => (
@@ -130,7 +130,7 @@ export default function Testimonials() {
                         </div>
 
                         {/* Navigation arrows */}
-                        <div className="flex items-center gap-2 mt-10 justify-end">
+                        <div className="flex items-center gap-2 mt-auto pt-10 justify-end">
                             <button
                                 onClick={() => goTo(active - 1)}
                                 className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:text-gray-700 hover:border-gray-400 transition-all duration-300 cursor-pointer hover:-translate-x-1 hover:shadow-md hover:scale-105"
