@@ -125,10 +125,10 @@ export default function CTA() {
                 <div className="w-1/2 max-md:w-full flex-shrink-0">
                     <FadeIn direction="right" className="h-full" delay={0.2} fullWidth>
                         <div
-                            className="h-full flex flex-col justify-between p-24 max-md:p-10 py-20"
+                            className="h-full flex flex-col justify-between py-24 pl-[calc(5vw+1.5rem)] pr-16 max-md:px-4 max-md:py-16"
                             style={{ background: 'linear-gradient(155.76deg, #000000 15.52%, #351750 159.28%)' }}
                         >
-                            <div className="max-w-[500px] ml-auto">
+                            <div className="max-w-[500px]">
                                 <h2 className="font-medium leading-none mb-10">
                                     <span className="text-white text-[2.5rem] max-md:text-[1.8rem] block mb-2 opacity-90 italic">Let's Talk</span>
                                     <span className="gradient-text text-[5rem] max-md:text-[3.5rem] block -ml-1">Business</span>
@@ -145,8 +145,12 @@ export default function CTA() {
                             </div>
 
                             {/* World map */}
-                            <div className="relative h-64 max-md:h-40 flex items-center mt-auto overflow-hidden">
-                                <img src={worldMap} alt="World Map" />
+                            <div className="relative h-52 max-md:h-32 flex items-center mt-auto overflow-hidden">
+                                <img
+                                    src={worldMap}
+                                    alt="World Map"
+                                    className="w-full h-auto object-contain"
+                                />
                             </div>
                         </div>
                     </FadeIn>
@@ -154,7 +158,7 @@ export default function CTA() {
 
                 {/* Right Side (50%) — Form Section */}
                 <div className="w-1/2 max-md:w-full flex items-center bg-[var(--color-bg-dark-alt)]">
-                    <div className="w-full max-w-[650px] mr-auto p-24 max-md:p-8 py-20">
+                    <div className="w-full pl-24 pr-[calc(5vw+1.5rem)] py-24 max-md:px-4 max-md:py-16">
                         <FadeIn direction="left" className="transition-all duration-500" delay={0.4} fullWidth>
                             {submitStatus === 'success' ? (
                                 <div className="bg-[rgba(var(--accent-purple-rgb),0.05)] border border-[var(--color-accent-purple)] rounded-none p-12 text-center animate-fade-in">
