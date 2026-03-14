@@ -4,51 +4,52 @@ import ArrowButton from './ui/ArrowButton';
 import { ChevronLeftIcon, ChevronRightIcon } from './ui/Icons';
 import FadeIn from './ui/FadeIn';
 
+import healthcareImg from '../assets/industries/Healthcare.jpg';
+import travelImg from '../assets/industries/Travel.jpg';
+import retailImg from '../assets/industries/Retail .jpg';
+import pharmaImg from '../assets/industries/Pharmaceuticals.jpg';
+import luxuryImg from '../assets/industries/Luxury .jpg';
+
 const industries = [
     {
         name: 'Healthcare',
-        image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop',
+        image: healthcareImg,
         paragraphs: [
             'At Fobex, we build secure, highly accessible patient portals for clinics and medical facilities.',
             'Our custom platforms take the friction out of daily appointment scheduling for your staff, while giving your patients complete peace of mind through clean interface design and robust data protection.',
         ],
-        cta: 'Learn more about how we serves in healthcare',
     },
     {
         name: 'Travel and Tourism',
-        image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop',
+        image: travelImg,
         paragraphs: [
             'At Fobex, we help travel brands and tourism agencies deliver a completely frictionless online booking journey.',
             'By combining custom web development with targeted search optimization, we help you capture global travelers and turn that digital traffic into direct, highly profitable reservations.',
         ],
-        cta: 'Learn more about how we serves in travel and tourism',
     },
     {
         name: 'Retail & E-Commerce',
-        image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop',
+        image: retailImg,
         paragraphs: [
             'At Fobex, we transition traditional retail operations into high-performing E-Commerce storefronts.',
             'Our custom web solutions enable your retail brand to reach new heights of success through increased sales and customer loyalty.',
         ],
-        cta: 'Learn more about how we serves in retail & e-commerce',
     },
     {
         name: 'Pharmaceuticals',
-        image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&auto=format&fit=crop',
+        image: pharmaImg,
         paragraphs: [
             'At Fobex, we enable top pharmaceutical companies and research labs around the world to establish their presence through our cutting-edge web architecture solutions.',
             'Our custom web solutions ensure maximum medical compliance for your brand and enable you to communicate your innovative medical research to the world.',
         ],
-        cta: 'Learn more about how we serves in pharmaceuticals',
     },
     {
         name: 'Luxury Retail & Jewelry',
-        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop',
+        image: luxuryImg,
         paragraphs: [
             'At Fobex, we transform the physical elegance of your premium products into a visually appealing and captivating digital platform.',
             'We pair stunning visuals with incredibly smooth software, helping you attract premium buyers and showcase your exclusive brand to the world.',
         ],
-        cta: 'Learn more about how we serves in luxury retail & jewelry',
     },
 ];
 
@@ -157,7 +158,7 @@ export default function Industries() {
 
                         <div className="mt-auto pt-6">
                             <ArrowButton href="#">
-                                {current.cta}
+                                Learn more about our Industry solutions
                             </ArrowButton>
                         </div>
                     </FadeIn>
