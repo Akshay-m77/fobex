@@ -41,7 +41,7 @@ const testimonials = [
             "We knew we had a fantastic product, but we just didn't have the visibility to back it up.",
             'Fobex helped us build a smart SEO strategy focused on the exact terms our customers are searching for. Our organic traffic has tripled since we started, and we are now consistently holding the top spot in search results. It has completely changed our lead generation.',
         ],
-        rating: 5,
+        rating: 4,
         author: 'David Chen | Marketing Head',
         image: seoImg,
     },
@@ -118,9 +118,6 @@ export default function Testimonials() {
 
                         {/* Author */}
                         <div className="flex items-center gap-3 mt-8 group cursor-default">
-                            <div className="w-10 h-10 rounded-none bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white text-sm font-semibold transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                                {t.author.charAt(0)}
-                            </div>
                             <div className="transition-transform duration-300 group-hover:translate-x-1">
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-gray-500">{t.rating}/5</span>
