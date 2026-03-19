@@ -81,7 +81,7 @@ export default function Process() {
                                 <span className="text-[var(--color-accent-purple)]">High Growth Realities</span>
                             </>
                         }
-                        subtitle="We make ideas happen in the digital world with goals, smart execution, and results that matter. Each step is designed to help you grow and succeed with real-time results for you."
+                        subtitle="When you partner with a top-tier web development company in Kochi Kerala, you expect flawless execution. We make ideas happen in the digital world with clear goals, smart engineering, and results that matter."
                     />
                 </FadeIn>
 

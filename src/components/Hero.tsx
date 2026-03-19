@@ -46,18 +46,20 @@ export default function Hero() {
                 {/* Title — left aligned */}
                 <FadeIn delay={0.2}>
                     <h1 className="text-[3.5rem] max-md:text-[2.2rem] font-medium max-md:not-italic leading-[1.1] max-md:leading-[1.15] tracking-[-0.02em] mb-6 max-w-[var(--container-sm)]">
+
+                        <span className="text-white">Building Powerfull  </span>
                         <span className="block">
-                            <span className="text-white">One Partner - </span>
-                            <span className="gradient-text">Every Digital Edge</span>
+                            <span className="gradient-text">Digital Experiences </span>
+
+                            <span className="text-white">that Imapct</span>
                         </span>
-                        <span className="text-white block">Your Brand Needs</span>
                     </h1>
                 </FadeIn>
 
                 {/* Description */}
                 <FadeIn delay={0.4}>
                     <p className="text-sm max-md:text-[13px] text-gray-400 max-w-[680px] leading-relaxed max-md:leading-[1.6] mb-8 max-md:mb-10 max-md:pr-4">
-                        Our story isn't just about code or design; we look at your complete business landscape. Our foundation is built on superior React apps and high-end mobile development. We integrate expert product leadership and video to build the next chapter of your brand.
+                        Our story isn't just about code or design; we look at your complete business landscape. As a leading web development company in Kochi Kerala, our foundation is built on superior React apps and high-end mobile development. We integrate expert product leadership and visual media to build the next chapter of your brand.
                     </p>
                 </FadeIn>
 

@@ -59,8 +59,7 @@ export default function Features() {
                             One Partner - <span className="text-[var(--color-accent-purple)]">Every Digital Edge</span> <br />Your Brand Needs
                         </h2>
                         <p className="text-sm text-gray-500 mx-auto leading-relaxed">
-                            We focus on user clarity and system speed from day one so your digital presence grows smoothly.<br className="hidden md:block" />
-                            Our strategy across all services is built to make a big market impact over time.
+                            We focus on user clarity and system speed from day one as the best website development company in Kochi, Kerala so your digital presence grows smoothly.
                         </p>
                     </div>
                 </FadeIn>
