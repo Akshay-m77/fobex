@@ -69,7 +69,9 @@ export default function Footer() {
                             {SOCIAL_LINKS.map((s, i) => (
                                 <a
                                     key={i}
-                                    href="#"
+                                    href={s.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-black hover:bg-[#9D31FF] hover:text-white transition-all duration-300 shadow-sm"
                                     aria-label={s.label}
                                 >

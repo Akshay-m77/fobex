@@ -58,7 +58,7 @@ export default function Hero() {
 
                 {/* Description */}
                 <FadeIn delay={0.4}>
-                    <p className="text-sm max-md:text-[13px] text-gray-400 max-w-[680px] leading-relaxed max-md:leading-[1.6] mb-8 max-md:mb-10 max-md:pr-4">
+                    <p className="text-sm max-md:text-[13px] text-gray-400 max-w-3xl text-left leading-relaxed max-md:leading-[1.6] mb-8 max-md:mb-10 max-md:pr-4">
                         Our story isn't just about code or design; we look at your complete business landscape. As a leading web development company in Kochi Kerala, our foundation is built on superior React apps and high-end mobile development. We integrate expert product leadership and visual media to build the next chapter of your brand.
                     </p>
                 </FadeIn>
